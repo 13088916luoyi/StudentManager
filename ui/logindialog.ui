@@ -6,27 +6,78 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>450</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>登录</string>
+   <string>学生管理系统 - 登录</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f5f5f5;
+}
+QLabel {
+    font-size: 13px;
+    color: #333333;
+    font-weight: bold;
+}
+QLabel#titleLabel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a90d9;
+}
+QLineEdit {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    min-height: 40px;
+}
+QLineEdit:focus {
+    border: 2px solid #4a90d9;
+}
+QPushButton {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 100px;
+}
+QPushButton#loginButton {
+    background-color: #4a90d9;
+    color: white;
+}
+QPushButton#loginButton:hover {
+    background-color: #3a7bc8;
+}
+QPushButton#registerButton {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+QPushButton#registerButton:hover {
+    background-color: #d0d0d0;
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <property name="leftMargin">
+    <number>40</number>
+   </property>
+   <property name="topMargin">
+    <number>30</number>
+   </property>
+   <property name="rightMargin">
+    <number>40</number>
+   </property>
+   <property name="bottomMargin">
+    <number>30</number>
+   </property>
    <item>
     <widget class="QLabel" name="titleLabel">
      <property name="text">
@@ -35,15 +86,8 @@
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
     </widget>
-   </item>
+    </item>
    <item>
     <spacer name="verticalSpacer_2">
      <property name="orientation">
@@ -59,20 +103,33 @@
    </item>
    <item>
     <layout class="QFormLayout" name="formLayout">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <property name="labelAlignment">
+      <set>Qt::AlignRight|Qt::AlignVCenter</set>
+     </property>
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::ExpandingFieldsGrow</enum>
+     </property>
      <item row="0" column="0">
       <widget class="QLabel" name="usernameLabel">
        <property name="text">
-        <string>用户名:</string>
+        <string>用户名：</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="usernameEdit"/>
+      <widget class="QLineEdit" name="usernameEdit">
+       <property name="placeholderText">
+        <string>请输入用户名</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="passwordLabel">
        <property name="text">
-        <string>密码:</string>
+        <string>密码：</string>
        </property>
       </widget>
      </item>
@@ -80,6 +137,9 @@
       <widget class="QLineEdit" name="passwordEdit">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="placeholderText">
+        <string>请输入密码</string>
        </property>
       </widget>
      </item>
@@ -100,6 +160,9 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>20</number>
+     </property>
      <item>
       <widget class="QPushButton" name="loginButton">
        <property name="text">
@@ -124,7 +187,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>20</height>
       </size>
      </property>
     </spacer>

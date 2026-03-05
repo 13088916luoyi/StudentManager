@@ -83,7 +83,8 @@ SOURCES       = ..\..\src\main.cpp \
 		..\..\src\gradeeditdialog.cpp \
 		..\..\src\studentprofiledialog.cpp \
 		..\..\src\courseselectiondialog.cpp \
-		..\..\src\gradestatsdialog.cpp debug\moc_mainwindow.cpp \
+		..\..\src\gradestatsdialog.cpp \
+		..\..\src\accountdialog.cpp debug\moc_mainwindow.cpp \
 		debug\moc_authcontroller.cpp \
 		debug\moc_logindialog.cpp \
 		debug\moc_registerdialog.cpp \
@@ -98,7 +99,8 @@ SOURCES       = ..\..\src\main.cpp \
 		debug\moc_gradeeditdialog.cpp \
 		debug\moc_studentprofiledialog.cpp \
 		debug\moc_courseselectiondialog.cpp \
-		debug\moc_gradestatsdialog.cpp
+		debug\moc_gradestatsdialog.cpp \
+		debug\moc_accountdialog.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
 		debug/databasemanager.o \
@@ -133,6 +135,7 @@ OBJECTS       = debug/main.o \
 		debug/studentprofiledialog.o \
 		debug/courseselectiondialog.o \
 		debug/gradestatsdialog.o \
+		debug/accountdialog.o \
 		debug/moc_mainwindow.o \
 		debug/moc_authcontroller.o \
 		debug/moc_logindialog.o \
@@ -148,7 +151,8 @@ OBJECTS       = debug/main.o \
 		debug/moc_gradeeditdialog.o \
 		debug/moc_studentprofiledialog.o \
 		debug/moc_courseselectiondialog.o \
-		debug/moc_gradestatsdialog.o
+		debug/moc_gradestatsdialog.o \
+		debug/moc_accountdialog.o
 
 DIST          =  ..\..\include\mainwindow.h \
 		..\..\include\databasemanager.h \
@@ -182,7 +186,8 @@ DIST          =  ..\..\include\mainwindow.h \
 		..\..\include\gradeeditdialog.h \
 		..\..\include\studentprofiledialog.h \
 		..\..\include\courseselectiondialog.h \
-		..\..\include\gradestatsdialog.h ..\..\src\main.cpp \
+		..\..\include\gradestatsdialog.h \
+		..\..\include\accountdialog.h ..\..\src\main.cpp \
 		..\..\src\mainwindow.cpp \
 		..\..\src\databasemanager.cpp \
 		..\..\src\user.cpp \
@@ -215,7 +220,8 @@ DIST          =  ..\..\include\mainwindow.h \
 		..\..\src\gradeeditdialog.cpp \
 		..\..\src\studentprofiledialog.cpp \
 		..\..\src\courseselectiondialog.cpp \
-		..\..\src\gradestatsdialog.cpp
+		..\..\src\gradestatsdialog.cpp \
+		..\..\src\accountdialog.cpp
 QMAKE_TARGET  = StudentManager
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = StudentManager.exe
@@ -226,7 +232,7 @@ DESTDIR_TARGET = debug\StudentManager.exe
 first: all
 all: Makefile.Debug  debug/StudentManager.exe
 
-debug/StudentManager.exe: C:/Study/qt/6.10.1/mingw_64/lib/libQt6Charts.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6OpenGLWidgets.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Widgets.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6OpenGL.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Gui.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Sql.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Core.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6EntryPoint.a ui_mainwindow.h ui_logindialog.h ui_registerdialog.h ui_adminmainwindow.h ui_teachermainwindow.h ui_studentmainwindow.h ui_studentdialog.h ui_teacherdialog.h ui_coursedialog.h ui_gradedialog.h ui_teacherprofiledialog.h ui_gradeeditdialog.h ui_studentprofiledialog.h ui_courseselectiondialog.h ui_gradestatsdialog.h $(OBJECTS) 
+debug/StudentManager.exe: C:/Study/qt/6.10.1/mingw_64/lib/libQt6Charts.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6OpenGLWidgets.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Widgets.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6OpenGL.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Gui.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Sql.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6Core.a C:/Study/qt/6.10.1/mingw_64/lib/libQt6EntryPoint.a ui_mainwindow.h ui_logindialog.h ui_registerdialog.h ui_adminmainwindow.h ui_teachermainwindow.h ui_studentmainwindow.h ui_studentdialog.h ui_teacherdialog.h ui_coursedialog.h ui_gradedialog.h ui_teacherprofiledialog.h ui_gradeeditdialog.h ui_studentprofiledialog.h ui_courseselectiondialog.h ui_gradestatsdialog.h ui_accountdialog.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @debug\object_script.StudentManager.Debug $(LIBS)
 
 qmake: FORCE
@@ -235,10 +241,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) StudentManager.zip $(SOURCES) $(DIST) ..\..\..\..\StudentManager.pro C:\Study\qt\6.10.1\mingw_64\mkspecs\features\spec_pre.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\device_config.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\sanitize.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\gcc-base.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\g++-base.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\windows-vulkan.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\g++-win32.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\windows-desktop.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\qconfig.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_openxr_loader.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_charts.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_charts_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_core.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_examples_asset_downloader_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_ffmpegmediapluginimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_help.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssynchronizer.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssynchronizer_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimedia.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediatestlibprivate_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_network.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3d.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dxr.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dxr_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_shadertools.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qt_functions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qt_config.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\win32-g++\qmake.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\Study\qt\6.10.1\mingw_64\mkspecs\features\exclusive_builds.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\toolchain.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\default_pre.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\default_pre.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\resolve_config.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\default_post.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\build_pass.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qml_debug.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\precompile_header.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\warn_on.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\permissions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qt.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\resources_functions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\resources.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\moc.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\opengl.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\uic.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qmake_use.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\file_copies.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\windows.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\testcase_targets.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\exceptions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\yacc.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\lex.prf ..\..\StudentManager.pro C:\Study\qt\6.10.1\mingw_64\lib\Qt6Charts.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6OpenGLWidgets.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Widgets.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6OpenGL.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Gui.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Sql.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Core.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6EntryPoint.prl    C:\Study\qt\6.10.1\mingw_64\mkspecs\features\data\dummy.cpp ..\..\include\mainwindow.h ..\..\include\databasemanager.h ..\..\include\user.h ..\..\include\student.h ..\..\include\teacher.h ..\..\include\course.h ..\..\include\grade.h ..\..\include\userdao.h ..\..\include\studentdao.h ..\..\include\teacherdao.h ..\..\include\coursedao.h ..\..\include\gradedao.h ..\..\include\passwordhasher.h ..\..\include\permissionmanager.h ..\..\include\authcontroller.h ..\..\include\studentcontroller.h ..\..\include\teachercontroller.h ..\..\include\coursecontroller.h ..\..\include\gradecontroller.h ..\..\include\logindialog.h ..\..\include\registerdialog.h ..\..\include\adminmainwindow.h ..\..\include\teachermainwindow.h ..\..\include\studentmainwindow.h ..\..\include\studentdialog.h ..\..\include\teacherdialog.h ..\..\include\coursedialog.h ..\..\include\gradedialog.h ..\..\include\teacherprofiledialog.h ..\..\include\gradeeditdialog.h ..\..\include\studentprofiledialog.h ..\..\include\courseselectiondialog.h ..\..\include\gradestatsdialog.h  ..\..\src\main.cpp ..\..\src\mainwindow.cpp ..\..\src\databasemanager.cpp ..\..\src\user.cpp ..\..\src\student.cpp ..\..\src\teacher.cpp ..\..\src\course.cpp ..\..\src\grade.cpp ..\..\src\userdao.cpp ..\..\src\studentdao.cpp ..\..\src\teacherdao.cpp ..\..\src\coursedao.cpp ..\..\src\gradedao.cpp ..\..\src\passwordhasher.cpp ..\..\src\permissionmanager.cpp ..\..\src\authcontroller.cpp ..\..\src\studentcontroller.cpp ..\..\src\teachercontroller.cpp ..\..\src\coursecontroller.cpp ..\..\src\gradecontroller.cpp ..\..\src\logindialog.cpp ..\..\src\registerdialog.cpp ..\..\src\adminmainwindow.cpp ..\..\src\teachermainwindow.cpp ..\..\src\studentmainwindow.cpp ..\..\src\studentdialog.cpp ..\..\src\teacherdialog.cpp ..\..\src\coursedialog.cpp ..\..\src\gradedialog.cpp ..\..\src\teacherprofiledialog.cpp ..\..\src\gradeeditdialog.cpp ..\..\src\studentprofiledialog.cpp ..\..\src\courseselectiondialog.cpp ..\..\src\gradestatsdialog.cpp ..\..\ui\mainwindow.ui ..\..\ui\logindialog.ui ..\..\ui\registerdialog.ui ..\..\ui\adminmainwindow.ui ..\..\ui\teachermainwindow.ui ..\..\ui\studentmainwindow.ui ..\..\ui\studentdialog.ui ..\..\ui\teacherdialog.ui ..\..\ui\coursedialog.ui ..\..\ui\gradedialog.ui ..\..\ui\teacherprofiledialog.ui ..\..\ui\gradeeditdialog.ui ..\..\ui\studentprofiledialog.ui ..\..\ui\courseselectiondialog.ui ..\..\ui\gradestatsdialog.ui    
+	$(ZIP) StudentManager.zip $(SOURCES) $(DIST) ..\..\..\..\StudentManager.pro C:\Study\qt\6.10.1\mingw_64\mkspecs\features\spec_pre.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\device_config.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\sanitize.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\gcc-base.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\g++-base.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\windows-vulkan.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\g++-win32.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\common\windows-desktop.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\qconfig.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_ext_openxr_loader.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_charts.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_charts_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_core.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_examples_asset_downloader_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_ffmpegmediapluginimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_help.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssynchronizer.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labssynchronizer_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimedia.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediatestlibprivate_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_network.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3d.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dxr.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick3dxr_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_shadertools.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qt_functions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qt_config.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\win32-g++\qmake.conf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\Study\qt\6.10.1\mingw_64\mkspecs\features\exclusive_builds.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\toolchain.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\default_pre.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\default_pre.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\resolve_config.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\default_post.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\build_pass.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qml_debug.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\precompile_header.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\warn_on.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\permissions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qt.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\resources_functions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\resources.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\moc.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\opengl.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\uic.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\qmake_use.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\file_copies.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\win32\windows.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\testcase_targets.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\exceptions.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\yacc.prf C:\Study\qt\6.10.1\mingw_64\mkspecs\features\lex.prf ..\..\StudentManager.pro C:\Study\qt\6.10.1\mingw_64\lib\Qt6Charts.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6OpenGLWidgets.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Widgets.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6OpenGL.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Gui.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Sql.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6Core.prl C:\Study\qt\6.10.1\mingw_64\lib\Qt6EntryPoint.prl    C:\Study\qt\6.10.1\mingw_64\mkspecs\features\data\dummy.cpp ..\..\include\mainwindow.h ..\..\include\databasemanager.h ..\..\include\user.h ..\..\include\student.h ..\..\include\teacher.h ..\..\include\course.h ..\..\include\grade.h ..\..\include\userdao.h ..\..\include\studentdao.h ..\..\include\teacherdao.h ..\..\include\coursedao.h ..\..\include\gradedao.h ..\..\include\passwordhasher.h ..\..\include\permissionmanager.h ..\..\include\authcontroller.h ..\..\include\studentcontroller.h ..\..\include\teachercontroller.h ..\..\include\coursecontroller.h ..\..\include\gradecontroller.h ..\..\include\logindialog.h ..\..\include\registerdialog.h ..\..\include\adminmainwindow.h ..\..\include\teachermainwindow.h ..\..\include\studentmainwindow.h ..\..\include\studentdialog.h ..\..\include\teacherdialog.h ..\..\include\coursedialog.h ..\..\include\gradedialog.h ..\..\include\teacherprofiledialog.h ..\..\include\gradeeditdialog.h ..\..\include\studentprofiledialog.h ..\..\include\courseselectiondialog.h ..\..\include\gradestatsdialog.h ..\..\include\accountdialog.h  ..\..\src\main.cpp ..\..\src\mainwindow.cpp ..\..\src\databasemanager.cpp ..\..\src\user.cpp ..\..\src\student.cpp ..\..\src\teacher.cpp ..\..\src\course.cpp ..\..\src\grade.cpp ..\..\src\userdao.cpp ..\..\src\studentdao.cpp ..\..\src\teacherdao.cpp ..\..\src\coursedao.cpp ..\..\src\gradedao.cpp ..\..\src\passwordhasher.cpp ..\..\src\permissionmanager.cpp ..\..\src\authcontroller.cpp ..\..\src\studentcontroller.cpp ..\..\src\teachercontroller.cpp ..\..\src\coursecontroller.cpp ..\..\src\gradecontroller.cpp ..\..\src\logindialog.cpp ..\..\src\registerdialog.cpp ..\..\src\adminmainwindow.cpp ..\..\src\teachermainwindow.cpp ..\..\src\studentmainwindow.cpp ..\..\src\studentdialog.cpp ..\..\src\teacherdialog.cpp ..\..\src\coursedialog.cpp ..\..\src\gradedialog.cpp ..\..\src\teacherprofiledialog.cpp ..\..\src\gradeeditdialog.cpp ..\..\src\studentprofiledialog.cpp ..\..\src\courseselectiondialog.cpp ..\..\src\gradestatsdialog.cpp ..\..\src\accountdialog.cpp ..\..\ui\mainwindow.ui ..\..\ui\logindialog.ui ..\..\ui\registerdialog.ui ..\..\ui\adminmainwindow.ui ..\..\ui\teachermainwindow.ui ..\..\ui\studentmainwindow.ui ..\..\ui\studentdialog.ui ..\..\ui\teacherdialog.ui ..\..\ui\coursedialog.ui ..\..\ui\gradedialog.ui ..\..\ui\teacherprofiledialog.ui ..\..\ui\gradeeditdialog.ui ..\..\ui\studentprofiledialog.ui ..\..\ui\courseselectiondialog.ui ..\..\ui\gradestatsdialog.ui ..\..\ui\accountdialog.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\databasemanager.o debug\user.o debug\student.o debug\teacher.o debug\course.o debug\grade.o debug\userdao.o debug\studentdao.o debug\teacherdao.o debug\coursedao.o debug\gradedao.o debug\passwordhasher.o debug\permissionmanager.o debug\authcontroller.o debug\studentcontroller.o debug\teachercontroller.o debug\coursecontroller.o debug\gradecontroller.o debug\logindialog.o debug\registerdialog.o debug\adminmainwindow.o debug\teachermainwindow.o debug\studentmainwindow.o debug\studentdialog.o debug\teacherdialog.o debug\coursedialog.o debug\gradedialog.o debug\teacherprofiledialog.o debug\gradeeditdialog.o debug\studentprofiledialog.o debug\courseselectiondialog.o debug\gradestatsdialog.o debug\moc_mainwindow.o debug\moc_authcontroller.o debug\moc_logindialog.o debug\moc_registerdialog.o debug\moc_adminmainwindow.o debug\moc_teachermainwindow.o debug\moc_studentmainwindow.o debug\moc_studentdialog.o debug\moc_teacherdialog.o debug\moc_coursedialog.o debug\moc_gradedialog.o debug\moc_teacherprofiledialog.o debug\moc_gradeeditdialog.o debug\moc_studentprofiledialog.o debug\moc_courseselectiondialog.o debug\moc_gradestatsdialog.o
+	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\databasemanager.o debug\user.o debug\student.o debug\teacher.o debug\course.o debug\grade.o debug\userdao.o debug\studentdao.o debug\teacherdao.o debug\coursedao.o debug\gradedao.o debug\passwordhasher.o debug\permissionmanager.o debug\authcontroller.o debug\studentcontroller.o debug\teachercontroller.o debug\coursecontroller.o debug\gradecontroller.o debug\logindialog.o debug\registerdialog.o debug\adminmainwindow.o debug\teachermainwindow.o debug\studentmainwindow.o debug\studentdialog.o debug\teacherdialog.o debug\coursedialog.o debug\gradedialog.o debug\teacherprofiledialog.o debug\gradeeditdialog.o debug\studentprofiledialog.o debug\courseselectiondialog.o debug\gradestatsdialog.o debug\accountdialog.o debug\moc_mainwindow.o debug\moc_authcontroller.o debug\moc_logindialog.o debug\moc_registerdialog.o debug\moc_adminmainwindow.o debug\moc_teachermainwindow.o debug\moc_studentmainwindow.o debug\moc_studentdialog.o debug\moc_teacherdialog.o debug\moc_coursedialog.o debug\moc_gradedialog.o debug\moc_teacherprofiledialog.o debug\moc_gradeeditdialog.o debug\moc_studentprofiledialog.o debug\moc_courseselectiondialog.o debug\moc_gradestatsdialog.o debug\moc_accountdialog.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -263,9 +269,9 @@ compiler_moc_predefs_clean:
 debug/moc_predefs.h: C:/Study/qt/6.10.1/mingw_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h C:\Study\qt\6.10.1\mingw_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_authcontroller.cpp debug/moc_logindialog.cpp debug/moc_registerdialog.cpp debug/moc_adminmainwindow.cpp debug/moc_teachermainwindow.cpp debug/moc_studentmainwindow.cpp debug/moc_studentdialog.cpp debug/moc_teacherdialog.cpp debug/moc_coursedialog.cpp debug/moc_gradedialog.cpp debug/moc_teacherprofiledialog.cpp debug/moc_gradeeditdialog.cpp debug/moc_studentprofiledialog.cpp debug/moc_courseselectiondialog.cpp debug/moc_gradestatsdialog.cpp
+compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_authcontroller.cpp debug/moc_logindialog.cpp debug/moc_registerdialog.cpp debug/moc_adminmainwindow.cpp debug/moc_teachermainwindow.cpp debug/moc_studentmainwindow.cpp debug/moc_studentdialog.cpp debug/moc_teacherdialog.cpp debug/moc_coursedialog.cpp debug/moc_gradedialog.cpp debug/moc_teacherprofiledialog.cpp debug/moc_gradeeditdialog.cpp debug/moc_studentprofiledialog.cpp debug/moc_courseselectiondialog.cpp debug/moc_gradestatsdialog.cpp debug/moc_accountdialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_authcontroller.cpp debug\moc_logindialog.cpp debug\moc_registerdialog.cpp debug\moc_adminmainwindow.cpp debug\moc_teachermainwindow.cpp debug\moc_studentmainwindow.cpp debug\moc_studentdialog.cpp debug\moc_teacherdialog.cpp debug\moc_coursedialog.cpp debug\moc_gradedialog.cpp debug\moc_teacherprofiledialog.cpp debug\moc_gradeeditdialog.cpp debug\moc_studentprofiledialog.cpp debug\moc_courseselectiondialog.cpp debug\moc_gradestatsdialog.cpp
+	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_authcontroller.cpp debug\moc_logindialog.cpp debug\moc_registerdialog.cpp debug\moc_adminmainwindow.cpp debug\moc_teachermainwindow.cpp debug\moc_studentmainwindow.cpp debug\moc_studentdialog.cpp debug\moc_teacherdialog.cpp debug\moc_coursedialog.cpp debug\moc_gradedialog.cpp debug\moc_teacherprofiledialog.cpp debug\moc_gradeeditdialog.cpp debug\moc_studentprofiledialog.cpp debug\moc_courseselectiondialog.cpp debug\moc_gradestatsdialog.cpp debug\moc_accountdialog.cpp
 debug/moc_mainwindow.cpp: ../../include/mainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -1201,6 +1207,24 @@ debug/moc_adminmainwindow.cpp: ../../include/adminmainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		../../include/user.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		../../include/studentcontroller.h \
@@ -1210,6 +1234,7 @@ debug/moc_adminmainwindow.cpp: ../../include/adminmainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/teachercontroller.h \
 		../../include/teacher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
 		../../include/teacherdao.h \
 		../../include/coursecontroller.h \
 		../../include/course.h \
@@ -1217,6 +1242,7 @@ debug/moc_adminmainwindow.cpp: ../../include/adminmainwindow.h \
 		../../include/gradecontroller.h \
 		../../include/grade.h \
 		../../include/gradedao.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
 		debug/moc_predefs.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/86191/Desktop/StudentManager/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Study/qt/6.10.1/mingw_64/mkspecs/win32-g++ -IC:/Users/86191/Desktop/StudentManager -IC:/Users/86191/Desktop/StudentManager/include -IC:/Study/qt/6.10.1/mingw_64/include -IC:/Study/qt/6.10.1/mingw_64/include/QtCharts -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGLWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGL -IC:/Study/qt/6.10.1/mingw_64/include/QtGui -IC:/Study/qt/6.10.1/mingw_64/include/QtSql -IC:/Study/qt/6.10.1/mingw_64/include/QtCore -I. -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Study/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\include\adminmainwindow.h -o debug\moc_adminmainwindow.cpp
@@ -1422,10 +1448,29 @@ debug/moc_teachermainwindow.cpp: ../../include/teachermainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		../../include/user.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		../../include/teachercontroller.h \
 		../../include/teacher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
 		../../include/teacherdao.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
@@ -1435,8 +1480,9 @@ debug/moc_teachermainwindow.cpp: ../../include/teachermainwindow.h \
 		../../include/gradecontroller.h \
 		../../include/grade.h \
 		../../include/gradedao.h \
-		../../include/studentcontroller.h \
 		../../include/student.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
+		../../include/studentcontroller.h \
 		../../include/studentdao.h \
 		debug/moc_predefs.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
@@ -1643,6 +1689,24 @@ debug/moc_studentmainwindow.cpp: ../../include/studentmainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		../../include/user.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		../../include/studentcontroller.h \
@@ -1653,8 +1717,9 @@ debug/moc_studentmainwindow.cpp: ../../include/studentmainwindow.h \
 		../../include/gradecontroller.h \
 		../../include/grade.h \
 		../../include/gradedao.h \
-		../../include/coursecontroller.h \
 		../../include/course.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
+		../../include/coursecontroller.h \
 		../../include/coursedao.h \
 		debug/moc_predefs.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
@@ -2066,8 +2131,12 @@ debug/moc_teacherdialog.cpp: ../../include/teacherdialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/teacher.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
+		../../include/course.h \
 		debug/moc_predefs.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/86191/Desktop/StudentManager/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Study/qt/6.10.1/mingw_64/mkspecs/win32-g++ -IC:/Users/86191/Desktop/StudentManager -IC:/Users/86191/Desktop/StudentManager/include -IC:/Study/qt/6.10.1/mingw_64/include -IC:/Study/qt/6.10.1/mingw_64/include/QtCharts -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGLWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGL -IC:/Study/qt/6.10.1/mingw_64/include/QtGui -IC:/Study/qt/6.10.1/mingw_64/include/QtSql -IC:/Study/qt/6.10.1/mingw_64/include/QtCore -I. -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Study/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\include\teacherdialog.h -o debug\moc_teacherdialog.cpp
@@ -2274,9 +2343,6 @@ debug/moc_coursedialog.cpp: ../../include/coursedialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../include/course.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
-		../../include/teacher.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		debug/moc_predefs.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/86191/Desktop/StudentManager/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Study/qt/6.10.1/mingw_64/mkspecs/win32-g++ -IC:/Users/86191/Desktop/StudentManager -IC:/Users/86191/Desktop/StudentManager/include -IC:/Study/qt/6.10.1/mingw_64/include -IC:/Study/qt/6.10.1/mingw_64/include/QtCharts -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGLWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGL -IC:/Study/qt/6.10.1/mingw_64/include/QtGui -IC:/Study/qt/6.10.1/mingw_64/include/QtSql -IC:/Study/qt/6.10.1/mingw_64/include/QtCore -I. -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Study/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\include\coursedialog.h -o debug\moc_coursedialog.cpp
@@ -2693,6 +2759,7 @@ debug/moc_teacherprofiledialog.cpp: ../../include/teacherprofiledialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../include/teacher.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
 		debug/moc_predefs.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/86191/Desktop/StudentManager/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Study/qt/6.10.1/mingw_64/mkspecs/win32-g++ -IC:/Users/86191/Desktop/StudentManager -IC:/Users/86191/Desktop/StudentManager/include -IC:/Study/qt/6.10.1/mingw_64/include -IC:/Study/qt/6.10.1/mingw_64/include/QtCharts -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGLWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGL -IC:/Study/qt/6.10.1/mingw_64/include/QtGui -IC:/Study/qt/6.10.1/mingw_64/include/QtSql -IC:/Study/qt/6.10.1/mingw_64/include/QtCore -I. -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Study/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\include\teacherprofiledialog.h -o debug\moc_teacherprofiledialog.cpp
@@ -3550,13 +3617,230 @@ debug/moc_gradestatsdialog.cpp: ../../include/gradestatsdialog.h \
 		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/86191/Desktop/StudentManager/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Study/qt/6.10.1/mingw_64/mkspecs/win32-g++ -IC:/Users/86191/Desktop/StudentManager -IC:/Users/86191/Desktop/StudentManager/include -IC:/Study/qt/6.10.1/mingw_64/include -IC:/Study/qt/6.10.1/mingw_64/include/QtCharts -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGLWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGL -IC:/Study/qt/6.10.1/mingw_64/include/QtGui -IC:/Study/qt/6.10.1/mingw_64/include/QtSql -IC:/Study/qt/6.10.1/mingw_64/include/QtCore -I. -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Study/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\include\gradestatsdialog.h -o debug\moc_gradestatsdialog.cpp
 
+debug/moc_accountdialog.cpp: ../../include/accountdialog.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialog \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtcoreglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtversionchecks.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtconfiginclude.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qconfig.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtcore-config.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtconfigmacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcompilerdetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qprocessordetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsystemdetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtcoreexports.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qassert.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtnoop.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtypes.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtversion.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtypeinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontainerfwd.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsysinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlogging.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qflags.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcompare_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qatomic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbasicatomic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qatomic_cxx11.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qgenericatomic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qyieldcpu.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qconstructormacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdarwinhelpers.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qexceptionhandling.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qforeach.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qttypetraits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfunctionpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qglobalstatic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmalloc.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qminmax.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qnumeric.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20type_traits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qoverload.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qswap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtresource.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qttranslation.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qversiontagging.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qnamespace.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcompare.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtmetamacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobject.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstring.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qchar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearray.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qrefcount.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qarraydata.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qpair.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qarraydatapointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qarraydataops.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontainertools_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qxptype_traits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20functional.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20memory.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q17memory.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearrayview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringfwd.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlatin1stringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qanystringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qutf8stringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringtokenizer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q23type_traits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringbuilder.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter_base.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcoreevent.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstracteventdispatcher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmetatype.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdatastream.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiodevicebase.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qscopedpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfloat16.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmath.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtformat_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterable.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtaggedpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmetacontainer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontainerinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qscopeguard.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobject_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbindingstorage.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmargins.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcheckedint_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q23utility.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20utility.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qaction.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qkeysequence.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qicon.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsize.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpixmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpaintdevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qrect.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qpoint.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qcolor.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qrgb.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qrgba64.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qshareddata.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qimage.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpixelformat.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtransform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpolygon.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qregion.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qspan.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20iterator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qline.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvariant.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdebug.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtextstream.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontiguouscache.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsharedpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qshareddata_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qset.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhash.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvarlengtharray.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalloc.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpalette.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfont.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qendian.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfontmetrics.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfontinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfontvariableaxis.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qsizepolicy.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qcursor.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qbitmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qevent.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qurl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qeventpoint.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvector2d.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvectornd.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpointingdevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputdevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qscreen.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QList \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QObject \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QRect \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QSize \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QSizeF \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/QTransform \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qscreen_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qthread.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qexception.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputmethod.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLineEdit \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlineedit.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextcursor.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../include/user.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		debug/moc_predefs.h \
+		C:/Study/qt/6.10.1/mingw_64/bin/moc.exe
+	C:\Study\qt\6.10.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/86191/Desktop/StudentManager/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Study/qt/6.10.1/mingw_64/mkspecs/win32-g++ -IC:/Users/86191/Desktop/StudentManager -IC:/Users/86191/Desktop/StudentManager/include -IC:/Study/qt/6.10.1/mingw_64/include -IC:/Study/qt/6.10.1/mingw_64/include/QtCharts -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGLWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtWidgets -IC:/Study/qt/6.10.1/mingw_64/include/QtOpenGL -IC:/Study/qt/6.10.1/mingw_64/include/QtGui -IC:/Study/qt/6.10.1/mingw_64/include/QtSql -IC:/Study/qt/6.10.1/mingw_64/include/QtCore -I. -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Study/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Study/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\include\accountdialog.h -o debug\moc_accountdialog.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_logindialog.h ui_registerdialog.h ui_adminmainwindow.h ui_teachermainwindow.h ui_studentmainwindow.h ui_studentdialog.h ui_teacherdialog.h ui_coursedialog.h ui_gradedialog.h ui_teacherprofiledialog.h ui_gradeeditdialog.h ui_studentprofiledialog.h ui_courseselectiondialog.h ui_gradestatsdialog.h
+compiler_uic_make_all: ui_mainwindow.h ui_logindialog.h ui_registerdialog.h ui_adminmainwindow.h ui_teachermainwindow.h ui_studentmainwindow.h ui_studentdialog.h ui_teacherdialog.h ui_coursedialog.h ui_gradedialog.h ui_teacherprofiledialog.h ui_gradeeditdialog.h ui_studentprofiledialog.h ui_courseselectiondialog.h ui_gradestatsdialog.h ui_accountdialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_logindialog.h ui_registerdialog.h ui_adminmainwindow.h ui_teachermainwindow.h ui_studentmainwindow.h ui_studentdialog.h ui_teacherdialog.h ui_coursedialog.h ui_gradedialog.h ui_teacherprofiledialog.h ui_gradeeditdialog.h ui_studentprofiledialog.h ui_courseselectiondialog.h ui_gradestatsdialog.h
+	-$(DEL_FILE) ui_mainwindow.h ui_logindialog.h ui_registerdialog.h ui_adminmainwindow.h ui_teachermainwindow.h ui_studentmainwindow.h ui_studentdialog.h ui_teacherdialog.h ui_coursedialog.h ui_gradedialog.h ui_teacherprofiledialog.h ui_gradeeditdialog.h ui_studentprofiledialog.h ui_courseselectiondialog.h ui_gradestatsdialog.h ui_accountdialog.h
 ui_mainwindow.h: ../../ui/mainwindow.ui \
 		C:/Study/qt/6.10.1/mingw_64/bin/uic.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\uic.exe ..\..\ui\mainwindow.ui -o ui_mainwindow.h
@@ -3616,6 +3900,10 @@ ui_courseselectiondialog.h: ../../ui/courseselectiondialog.ui \
 ui_gradestatsdialog.h: ../../ui/gradestatsdialog.ui \
 		C:/Study/qt/6.10.1/mingw_64/bin/uic.exe
 	C:\Study\qt\6.10.1\mingw_64\bin\uic.exe ..\..\ui\gradestatsdialog.ui -o ui_gradestatsdialog.h
+
+ui_accountdialog.h: ../../ui/accountdialog.ui \
+		C:/Study/qt/6.10.1/mingw_64/bin/uic.exe
+	C:\Study\qt\6.10.1\mingw_64\bin\uic.exe ..\..\ui\accountdialog.ui -o ui_accountdialog.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -3835,6 +4123,24 @@ debug/main.o: ../../src/main.cpp ../../include/logindialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qmainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		../../include/studentcontroller.h \
 		../../include/student.h \
 		../../include/studentdao.h \
@@ -3842,6 +4148,7 @@ debug/main.o: ../../src/main.cpp ../../include/logindialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/teachercontroller.h \
 		../../include/teacher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
 		../../include/teacherdao.h \
 		../../include/coursecontroller.h \
 		../../include/course.h \
@@ -3849,6 +4156,7 @@ debug/main.o: ../../src/main.cpp ../../include/logindialog.h \
 		../../include/gradecontroller.h \
 		../../include/grade.h \
 		../../include/gradedao.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
 		../../include/teachermainwindow.h \
 		../../include/studentmainwindow.h \
 		../../include/databasemanager.h \
@@ -4470,7 +4778,15 @@ debug/teacher.o: ../../src/teacher.cpp ../../include/teacher.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q23type_traits.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter_base.h
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter_base.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teacher.o ..\..\src\teacher.cpp
 
 debug/course.o: ../../src/course.cpp ../../include/course.h \
@@ -5003,15 +5319,16 @@ debug/teacherdao.o: ../../src/teacherdao.cpp ../../include/teacherdao.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter_base.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterator.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/databasemanager.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtSql/QSqlDatabase \
 		C:/Study/qt/6.10.1/mingw_64/include/QtSql/qsqldatabase.h \
@@ -5844,16 +6161,17 @@ debug/teachercontroller.o: ../../src/teachercontroller.cpp ../../include/teacher
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter_base.h \
-		../../include/teacherdao.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterator.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h \
+		../../include/teacherdao.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teachercontroller.o ..\..\src\teachercontroller.cpp
 
 debug/coursecontroller.o: ../../src/coursecontroller.cpp ../../include/coursecontroller.h \
@@ -6039,7 +6357,13 @@ debug/gradecontroller.o: ../../src/gradecontroller.cpp ../../include/gradecontro
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h \
+		../../include/student.h \
+		../../include/course.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qshareddata.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qshareddata_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gradecontroller.o ..\..\src\gradecontroller.cpp
 
 debug/logindialog.o: ../../src/logindialog.cpp ../../include/logindialog.h \
@@ -6737,37 +7061,12 @@ debug/adminmainwindow.o: ../../src/adminmainwindow.cpp ../../include/adminmainwi
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../include/user.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
-		../../include/studentcontroller.h \
-		../../include/student.h \
-		../../include/studentdao.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
-		../../include/teachercontroller.h \
-		../../include/teacher.h \
-		../../include/teacherdao.h \
-		../../include/coursecontroller.h \
-		../../include/course.h \
-		../../include/coursedao.h \
-		../../include/gradecontroller.h \
-		../../include/grade.h \
-		../../include/gradedao.h \
-		ui_adminmainwindow.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFrame \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHeaderView \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -6780,6 +7079,36 @@ debug/adminmainwindow.o: ../../src/adminmainwindow.cpp ../../include/adminmainwi
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
+		../../include/user.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		../../include/studentcontroller.h \
+		../../include/student.h \
+		../../include/studentdao.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
+		../../include/teachercontroller.h \
+		../../include/teacher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
+		../../include/teacherdao.h \
+		../../include/coursecontroller.h \
+		../../include/course.h \
+		../../include/coursedao.h \
+		../../include/gradecontroller.h \
+		../../include/grade.h \
+		../../include/gradedao.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
+		ui_adminmainwindow.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFrame \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHeaderView \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
@@ -6799,8 +7128,6 @@ debug/adminmainwindow.o: ../../src/adminmainwindow.cpp ../../include/adminmainwi
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QStatusBar \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstatusbar.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QWidget \
 		../../include/authcontroller.h \
@@ -6811,11 +7138,15 @@ debug/adminmainwindow.o: ../../src/adminmainwindow.cpp ../../include/adminmainwi
 		../../include/teacherdialog.h \
 		../../include/coursedialog.h \
 		../../include/gradedialog.h \
+		../../include/accountdialog.h \
+		../../include/passwordhasher.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QButtonGroup \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qbuttongroup.h
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qbuttongroup.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QUuid \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/quuid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\adminmainwindow.o ..\..\src\adminmainwindow.cpp
 
 debug/teachermainwindow.o: ../../src/teachermainwindow.cpp ../../include/teachermainwindow.h \
@@ -7019,10 +7350,29 @@ debug/teachermainwindow.o: ../../src/teachermainwindow.cpp ../../include/teacher
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		../../include/user.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		../../include/teachercontroller.h \
 		../../include/teacher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
 		../../include/teacherdao.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
@@ -7032,8 +7382,9 @@ debug/teachermainwindow.o: ../../src/teachermainwindow.cpp ../../include/teacher
 		../../include/gradecontroller.h \
 		../../include/grade.h \
 		../../include/gradedao.h \
-		../../include/studentcontroller.h \
 		../../include/student.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
+		../../include/studentcontroller.h \
 		../../include/studentdao.h \
 		ui_teachermainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
@@ -7047,26 +7398,11 @@ debug/teachermainwindow.o: ../../src/teachermainwindow.cpp ../../include/teacher
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFrame \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QGroupBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgroupbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qheaderview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
@@ -7080,12 +7416,8 @@ debug/teachermainwindow.o: ../../src/teachermainwindow.cpp ../../include/teacher
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QStatusBar \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstatusbar.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QWidget \
-		../../include/authcontroller.h \
-		../../include/userdao.h \
 		../../include/teacherprofiledialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialog \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialog.h \
@@ -7123,9 +7455,7 @@ debug/teachermainwindow.o: ../../src/teachermainwindow.cpp ../../include/teacher
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QButtonGroup \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qbuttongroup.h
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teachermainwindow.o ..\..\src\teachermainwindow.cpp
 
 debug/studentmainwindow.o: ../../src/studentmainwindow.cpp ../../include/studentmainwindow.h \
@@ -7329,6 +7659,24 @@ debug/studentmainwindow.o: ../../src/studentmainwindow.cpp ../../include/student
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidgetItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		../../include/user.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		../../include/studentcontroller.h \
@@ -7339,8 +7687,9 @@ debug/studentmainwindow.o: ../../src/studentmainwindow.cpp ../../include/student
 		../../include/gradecontroller.h \
 		../../include/grade.h \
 		../../include/gradedao.h \
-		../../include/coursecontroller.h \
 		../../include/course.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QMap \
+		../../include/coursecontroller.h \
 		../../include/coursedao.h \
 		ui_studentmainwindow.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
@@ -7354,26 +7703,11 @@ debug/studentmainwindow.o: ../../src/studentmainwindow.cpp ../../include/student
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFrame \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QGroupBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgroupbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qheaderview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
@@ -7388,8 +7722,6 @@ debug/studentmainwindow.o: ../../src/studentmainwindow.cpp ../../include/student
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstatusbar.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTabWidget \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QWidget \
 		../../include/authcontroller.h \
@@ -7612,21 +7944,6 @@ debug/studentdialog.o: ../../src/studentdialog.cpp ../../include/studentdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QComboBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialogButtonBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFormLayout \
@@ -7638,6 +7955,7 @@ debug/studentdialog.o: ../../src/studentdialog.cpp ../../include/studentdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLineEdit \
@@ -7646,8 +7964,7 @@ debug/studentdialog.o: ../../src/studentdialog.cpp ../../include/studentdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\studentdialog.o ..\..\src\studentdialog.cpp
 
@@ -7851,29 +8168,18 @@ debug/teacherdialog.o: ../../src/teacherdialog.cpp ../../include/teacherdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/teacher.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
+		../../include/course.h \
 		ui_teacherdialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QAbstractButton \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QComboBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialogButtonBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFormLayout \
@@ -7885,6 +8191,7 @@ debug/teacherdialog.o: ../../src/teacherdialog.cpp ../../include/teacherdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLineEdit \
@@ -7893,9 +8200,27 @@ debug/teacherdialog.o: ../../src/teacherdialog.cpp ../../include/teacherdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QListWidget \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlistwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlistview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QListWidgetItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teacherdialog.o ..\..\src\teacherdialog.cpp
 
 debug/coursedialog.o: ../../src/coursedialog.cpp ../../include/coursedialog.h \
@@ -8100,9 +8425,6 @@ debug/coursedialog.o: ../../src/coursedialog.cpp ../../include/coursedialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../include/course.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
-		../../include/teacher.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		ui_coursedialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QAbstractButton \
@@ -8145,10 +8467,8 @@ debug/coursedialog.o: ../../src/coursedialog.cpp ../../include/coursedialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTextEdit \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\coursedialog.o ..\..\src\coursedialog.cpp
 
@@ -8394,12 +8714,7 @@ debug/gradedialog.o: ../../src/gradedialog.cpp ../../include/gradedialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gradedialog.o ..\..\src\gradedialog.cpp
 
@@ -8605,6 +8920,7 @@ debug/teacherprofiledialog.o: ../../src/teacherprofiledialog.cpp ../../include/t
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../include/teacher.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QStringList \
 		ui_teacherprofiledialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QAbstractButton \
@@ -9637,6 +9953,257 @@ debug/gradestatsdialog.o: ../../src/gradestatsdialog.cpp ../../include/gradestat
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/QPainter
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gradestatsdialog.o ..\..\src\gradestatsdialog.cpp
 
+debug/accountdialog.o: ../../src/accountdialog.cpp ../../include/accountdialog.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialog \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtcoreglobal.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtversionchecks.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtconfiginclude.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qconfig.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtcore-config.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtconfigmacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcompilerdetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qprocessordetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsystemdetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtcoreexports.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qassert.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtnoop.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtypes.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtversion.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtypeinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontainerfwd.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsysinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlogging.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qflags.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcompare_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qatomic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbasicatomic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qatomic_cxx11.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qgenericatomic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qyieldcpu.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qconstructormacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdarwinhelpers.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qexceptionhandling.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qforeach.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qttypetraits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfunctionpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qglobalstatic.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmalloc.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qminmax.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qnumeric.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20type_traits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qoverload.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qswap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtresource.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qttranslation.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qversiontagging.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qnamespace.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcompare.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtmetamacros.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobject.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstring.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qchar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearray.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qrefcount.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qarraydata.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qpair.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qarraydatapointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qarraydataops.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontainertools_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qxptype_traits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20functional.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20memory.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q17memory.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearrayview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringfwd.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlatin1stringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qanystringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qutf8stringview.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringtokenizer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q23type_traits.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringbuilder.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringconverter_base.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringlist.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qstringmatcher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcoreevent.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstracteventdispatcher.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmetatype.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdatastream.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiodevicebase.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qscopedpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfloat16.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmath.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtformat_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiterable.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtaggedpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmetacontainer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontainerinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qscopeguard.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qobject_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qbindingstorage.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmargins.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcheckedint_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q23utility.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20utility.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qaction.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qkeysequence.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qicon.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsize.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpixmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpaintdevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qrect.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qpoint.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qcolor.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qrgb.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qrgba64.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qshareddata.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qimage.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpixelformat.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtransform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpolygon.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qregion.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qspan.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/q20iterator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qline.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvariant.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qdebug.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtextstream.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcontiguouscache.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsharedpointer.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qshareddata_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qset.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qhash.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvarlengtharray.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qalloc.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpalette.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfont.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qendian.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfontmetrics.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfontinfo.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qfontvariableaxis.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qsizepolicy.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qcursor.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qbitmap.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qevent.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qurl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qeventpoint.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvector2d.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvectornd.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpointingdevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputdevice.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qscreen.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QList \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QObject \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QRect \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QSize \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QSizeF \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/QTransform \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qscreen_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qthread.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qexception.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputmethod.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLineEdit \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlineedit.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextcursor.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../include/user.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
+		ui_accountdialog.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVariant \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QAbstractButton \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QComboBox \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qcombobox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialogButtonBox \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFormLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qformlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qmessagebox.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\accountdialog.o ..\..\src\accountdialog.cpp
+
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
 
@@ -9684,6 +10251,9 @@ debug/moc_courseselectiondialog.o: debug/moc_courseselectiondialog.cpp
 
 debug/moc_gradestatsdialog.o: debug/moc_gradestatsdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_gradestatsdialog.o debug\moc_gradestatsdialog.cpp
+
+debug/moc_accountdialog.o: debug/moc_accountdialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_accountdialog.o debug\moc_accountdialog.cpp
 
 ####### Install
 

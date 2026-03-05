@@ -14,6 +14,7 @@ public:
     bool update(const Grade& grade);
     bool remove(int id);
     std::optional<Grade> findById(int id);
+    std::optional<Grade> findByStudentAndCourse(int studentId, int courseId);
     QVector<Grade> findAll();
     QVector<Grade> findByStudentId(int studentId);
     QVector<Grade> findByCourseId(int courseId);

@@ -14,7 +14,9 @@ public:
     bool update(const Course& course);
     bool remove(int id);
     std::optional<Course> findById(int id);
+    std::optional<Course> findByCourseNo(const QString& courseNo);
     QVector<Course> findAll();
+    QVector<Course> search(const QString& keyword);
     QVector<Course> findByTeacherId(int teacherId);
 
 private:

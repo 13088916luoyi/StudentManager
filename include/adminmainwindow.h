@@ -2,6 +2,7 @@
 #define ADMINMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidgetItem>
 #include "user.h"
 #include "studentcontroller.h"
 #include "teachercontroller.h"
@@ -38,16 +39,31 @@ private slots:
     void onEditTeacherClicked();
     void onDeleteTeacherClicked();
     void onRefreshTeachersClicked();
+    void onSearchTeacherChanged(const QString& text);
 
     void onAddCourseClicked();
     void onEditCourseClicked();
     void onDeleteCourseClicked();
     void onRefreshCoursesClicked();
+    void onSearchCourseChanged(const QString& text);
 
     void onAddGradeClicked();
     void onEditGradeClicked();
     void onDeleteGradeClicked();
     void onRefreshGradesClicked();
+    void onSearchGradeChanged(const QString& text);
+
+    void onStudentTableItemEntered(QTableWidgetItem* item);
+    void onTeacherTableItemEntered(QTableWidgetItem* item);
+    void onCourseTableItemEntered(QTableWidgetItem* item);
+    void onGradeTableItemEntered(QTableWidgetItem* item);
+    void onAccountTableItemEntered(QTableWidgetItem* item);
+
+    void onAddAccountClicked();
+    void onEditAccountClicked();
+    void onDeleteAccountClicked();
+    void onRefreshAccountsClicked();
+    void onSearchAccountChanged(const QString& text);
 
 private:
     Ui::AdminMainWindow *ui;
@@ -67,6 +83,7 @@ private:
     void setupTeacherPage();
     void setupCoursePage();
     void setupGradePage();
+    void setupAccountPage();
     void updateNavButtons(int index);
 };
 

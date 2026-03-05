@@ -18,7 +18,7 @@
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +27,7 @@ class Ui_GradeDialog
 {
 public:
     QVBoxLayout *verticalLayout;
+    QLabel *titleLabel;
     QFormLayout *formLayout;
     QLabel *label;
     QComboBox *studentComboBox;
@@ -34,23 +35,72 @@ public:
     QComboBox *courseComboBox;
     QLabel *label_3;
     QDoubleSpinBox *gradeSpinBox;
-    QLabel *label_4;
-    QComboBox *semesterComboBox;
-    QLabel *label_5;
-    QComboBox *examTypeComboBox;
-    QLabel *label_6;
-    QLineEdit *remarksEdit;
+    QSpacerItem *verticalSpacer;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *GradeDialog)
     {
         if (GradeDialog->objectName().isEmpty())
             GradeDialog->setObjectName("GradeDialog");
-        GradeDialog->resize(400, 320);
+        GradeDialog->resize(450, 280);
+        GradeDialog->setStyleSheet(QString::fromUtf8("QDialog {\n"
+"    background-color: #f5f5f5;\n"
+"}\n"
+"QLabel {\n"
+"    font-size: 13px;\n"
+"    color: #333333;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QComboBox, QDoubleSpinBox {\n"
+"    padding: 8px;\n"
+"    border: 1px solid #cccccc;\n"
+"    border-radius: 4px;\n"
+"    background-color: white;\n"
+"    font-size: 13px;\n"
+"    min-height: 35px;\n"
+"}\n"
+"QComboBox:focus, QDoubleSpinBox:focus {\n"
+"    border: 2px solid #4a90d9;\n"
+"}\n"
+"QPushButton {\n"
+"    padding: 10px 20px;\n"
+"    border: none;\n"
+"    border-radius: 4px;\n"
+"    font-size: 13px;\n"
+"    font-weight: bold;\n"
+"    min-width: 80px;\n"
+"}\n"
+"QPushButton[text=\"\347\241\256\345\256\232\"], QPushButton[text=\"OK\"] {\n"
+"    background-color: #4a90d9;\n"
+"    color: white;\n"
+"}\n"
+"QPushButton[text=\"\347\241\256\345\256\232\"]:hover, QPushButton[text=\"OK\"]:hover {\n"
+"    background-color: #3a7bc8;\n"
+"}\n"
+"QPushButton[text=\"\345\217\226\346\266\210\"], QPushButton[text=\"Cancel\"] {\n"
+"    background-color: #e0e0e0;\n"
+"    color: #"
+                        "333333;\n"
+"}\n"
+"QPushButton[text=\"\345\217\226\346\266\210\"]:hover, QPushButton[text=\"Cancel\"]:hover {\n"
+"    background-color: #d0d0d0;\n"
+"}"));
         verticalLayout = new QVBoxLayout(GradeDialog);
+        verticalLayout->setSpacing(15);
         verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(25, 25, 25, 25);
+        titleLabel = new QLabel(GradeDialog);
+        titleLabel->setObjectName("titleLabel");
+        titleLabel->setStyleSheet(QString::fromUtf8("font-size: 18px; font-weight: bold; color: #4a90d9; margin-bottom: 10px;"));
+        titleLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(titleLabel);
+
         formLayout = new QFormLayout();
+        formLayout->setSpacing(12);
         formLayout->setObjectName("formLayout");
+        formLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        formLayout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
         label = new QLabel(GradeDialog);
         label->setObjectName("label");
 
@@ -58,6 +108,7 @@ public:
 
         studentComboBox = new QComboBox(GradeDialog);
         studentComboBox->setObjectName("studentComboBox");
+        studentComboBox->setMinimumSize(QSize(250, 35));
 
         formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, studentComboBox);
 
@@ -68,6 +119,7 @@ public:
 
         courseComboBox = new QComboBox(GradeDialog);
         courseComboBox->setObjectName("courseComboBox");
+        courseComboBox->setMinimumSize(QSize(250, 35));
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, courseComboBox);
 
@@ -78,57 +130,25 @@ public:
 
         gradeSpinBox = new QDoubleSpinBox(GradeDialog);
         gradeSpinBox->setObjectName("gradeSpinBox");
+        gradeSpinBox->setMinimumSize(QSize(250, 35));
         gradeSpinBox->setMinimum(0.000000000000000);
         gradeSpinBox->setMaximum(100.000000000000000);
         gradeSpinBox->setValue(60.000000000000000);
 
         formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, gradeSpinBox);
 
-        label_4 = new QLabel(GradeDialog);
-        label_4->setObjectName("label_4");
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_4);
-
-        semesterComboBox = new QComboBox(GradeDialog);
-        semesterComboBox->addItem(QString());
-        semesterComboBox->addItem(QString());
-        semesterComboBox->addItem(QString());
-        semesterComboBox->setObjectName("semesterComboBox");
-        semesterComboBox->setEditable(true);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, semesterComboBox);
-
-        label_5 = new QLabel(GradeDialog);
-        label_5->setObjectName("label_5");
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_5);
-
-        examTypeComboBox = new QComboBox(GradeDialog);
-        examTypeComboBox->addItem(QString());
-        examTypeComboBox->addItem(QString());
-        examTypeComboBox->addItem(QString());
-        examTypeComboBox->setObjectName("examTypeComboBox");
-        examTypeComboBox->setEditable(true);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, examTypeComboBox);
-
-        label_6 = new QLabel(GradeDialog);
-        label_6->setObjectName("label_6");
-
-        formLayout->setWidget(5, QFormLayout::ItemRole::LabelRole, label_6);
-
-        remarksEdit = new QLineEdit(GradeDialog);
-        remarksEdit->setObjectName("remarksEdit");
-
-        formLayout->setWidget(5, QFormLayout::ItemRole::FieldRole, remarksEdit);
-
 
         verticalLayout->addLayout(formLayout);
+
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
 
         buttonBox = new QDialogButtonBox(GradeDialog);
         buttonBox->setObjectName("buttonBox");
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox->setCenterButtons(true);
 
         verticalLayout->addWidget(buttonBox);
 
@@ -143,20 +163,10 @@ public:
     void retranslateUi(QDialog *GradeDialog)
     {
         GradeDialog->setWindowTitle(QCoreApplication::translate("GradeDialog", "\346\210\220\347\273\251\344\277\241\346\201\257", nullptr));
+        titleLabel->setText(QCoreApplication::translate("GradeDialog", "\346\210\220\347\273\251\344\277\241\346\201\257", nullptr));
         label->setText(QCoreApplication::translate("GradeDialog", "\345\255\246\347\224\237\357\274\232", nullptr));
         label_2->setText(QCoreApplication::translate("GradeDialog", "\350\257\276\347\250\213\357\274\232", nullptr));
         label_3->setText(QCoreApplication::translate("GradeDialog", "\346\210\220\347\273\251\357\274\232", nullptr));
-        label_4->setText(QCoreApplication::translate("GradeDialog", "\345\255\246\346\234\237\357\274\232", nullptr));
-        semesterComboBox->setItemText(0, QCoreApplication::translate("GradeDialog", "2024-2025-1", nullptr));
-        semesterComboBox->setItemText(1, QCoreApplication::translate("GradeDialog", "2024-2025-2", nullptr));
-        semesterComboBox->setItemText(2, QCoreApplication::translate("GradeDialog", "2025-2026-1", nullptr));
-
-        label_5->setText(QCoreApplication::translate("GradeDialog", "\350\200\203\350\257\225\347\261\273\345\236\213\357\274\232", nullptr));
-        examTypeComboBox->setItemText(0, QCoreApplication::translate("GradeDialog", "\346\234\237\346\234\253\350\200\203\350\257\225", nullptr));
-        examTypeComboBox->setItemText(1, QCoreApplication::translate("GradeDialog", "\346\234\237\344\270\255\350\200\203\350\257\225", nullptr));
-        examTypeComboBox->setItemText(2, QCoreApplication::translate("GradeDialog", "\345\271\263\346\227\266\346\210\220\347\273\251", nullptr));
-
-        label_6->setText(QCoreApplication::translate("GradeDialog", "\345\244\207\346\263\250\357\274\232", nullptr));
     } // retranslateUi
 
 };

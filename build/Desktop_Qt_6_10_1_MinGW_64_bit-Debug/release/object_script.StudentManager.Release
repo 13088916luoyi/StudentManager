@@ -32,6 +32,7 @@ release/gradeeditdialog.o
 release/studentprofiledialog.o
 release/courseselectiondialog.o
 release/gradestatsdialog.o
+release/accountdialog.o
 release/moc_mainwindow.o
 release/moc_authcontroller.o
 release/moc_logindialog.o
@@ -48,3 +49,4 @@ release/moc_gradeeditdialog.o
 release/moc_studentprofiledialog.o
 release/moc_courseselectiondialog.o
 release/moc_gradestatsdialog.o
+release/moc_accountdialog.o

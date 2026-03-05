@@ -7,13 +7,13 @@
 bool StudentDAO::insert(const Student& student)
 {
     QSqlQuery query(DatabaseManager::instance().database());
-    query.prepare("INSERT INTO students (user_id, student_no, name, department, class_name) "
-                  "VALUES (:user_id, :student_no, :name, :department, :class_name)");
+    query.prepare("INSERT INTO students (user_id, student_no, name, class_name, major) "
+                  "VALUES (:user_id, :student_no, :name, :class_name, :major)");
     query.bindValue(":user_id", student.userId() == 0 ? QVariant() : student.userId());
     query.bindValue(":student_no", student.studentNo());
     query.bindValue(":name", student.name());
-    query.bindValue(":department", student.department());
     query.bindValue(":class_name", student.className());
+    query.bindValue(":major", student.major());
 
     if (!query.exec()) {
         qDebug() << "插入学生失败:" << query.lastError().text();
@@ -26,12 +26,12 @@ bool StudentDAO::update(const Student& student)
 {
     QSqlQuery query(DatabaseManager::instance().database());
     query.prepare("UPDATE students SET user_id=:user_id, student_no=:student_no, name=:name, "
-                  "department=:department, class_name=:class_name WHERE id=:id");
+                  "class_name=:class_name, major=:major WHERE id=:id");
     query.bindValue(":user_id", student.userId() == 0 ? QVariant() : student.userId());
     query.bindValue(":student_no", student.studentNo());
     query.bindValue(":name", student.name());
-    query.bindValue(":department", student.department());
     query.bindValue(":class_name", student.className());
+    query.bindValue(":major", student.major());
     query.bindValue(":id", student.id());
 
     if (!query.exec()) {
@@ -139,3 +139,8 @@ Student StudentDAO::createStudentFromQuery(QSqlQuery& query)
     student.setId(query.value("id").toInt());
     student.setUserId(query.value("user_id").toInt());
     student.setStudentNo(query.value("student_no").toString());
+    student.setName(query.value("name").toString());
+    student.setClassName(query.value("class_name").toString());
+    student.setMajor(query.value("major").toString());
+    return student;
+}

@@ -30,7 +30,7 @@ def create_database():
     conn = sqlite3.connect('studentmanager.db')
     cursor = conn.cursor()
     
-    cursor.execute('DROP TABLE IF EXISTS course_students')
+    cursor.execute('DROP TABLE IF EXISTS teacher_courses')
     cursor.execute('DROP TABLE IF EXISTS grades')
     cursor.execute('DROP TABLE IF EXISTS courses')
     cursor.execute('DROP TABLE IF EXISTS teachers')
@@ -49,92 +49,81 @@ def create_database():
         )
     ''')
     
+    # 学生表
     cursor.execute('''
         CREATE TABLE students (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER UNIQUE,
             student_no VARCHAR(20) UNIQUE NOT NULL,
             name VARCHAR(50) NOT NULL,
-            gender VARCHAR(10) CHECK(gender IN ('男', '女')),
-            age INTEGER,
-            department VARCHAR(100),
             class_name VARCHAR(50),
-            phone VARCHAR(20),
-            email VARCHAR(100),
+            major VARCHAR(100),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         )
     ''')
     
+    # 教师表
     cursor.execute('''
         CREATE TABLE teachers (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER UNIQUE,
             teacher_no VARCHAR(20) UNIQUE NOT NULL,
             name VARCHAR(50) NOT NULL,
-            gender VARCHAR(10) CHECK(gender IN ('男', '女')),
-            age INTEGER,
-            department VARCHAR(100),
-            title VARCHAR(50),
-            phone VARCHAR(20),
-            email VARCHAR(100),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         )
     ''')
     
+    # 课程表
     cursor.execute('''
         CREATE TABLE courses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             course_no VARCHAR(20) UNIQUE NOT NULL,
             course_name VARCHAR(100) NOT NULL,
-            teacher_id INTEGER,
             credit REAL,
             hours INTEGER,
-            description TEXT,
-            course_type VARCHAR(20),
+            course_type VARCHAR(20) CHECK(course_type IN ('必修', '选修')),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
     
+    # 教师课程关联表
+    cursor.execute('''
+        CREATE TABLE teacher_courses (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            teacher_id INTEGER NOT NULL,
+            course_id INTEGER NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE,
+            FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+            UNIQUE(teacher_id, course_id)
+        )
+    ''')
+    
+    # 成绩表
     cursor.execute('''
         CREATE TABLE grades (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             student_id INTEGER NOT NULL,
             course_id INTEGER NOT NULL,
             grade REAL CHECK(grade >= 0 AND grade <= 100),
-            semester VARCHAR(20),
-            exam_type VARCHAR(50),
-            remarks TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
             FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
-            UNIQUE(student_id, course_id, semester)
-        )
-    ''')
-    
-    cursor.execute('''
-        CREATE TABLE course_students (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            course_id INTEGER NOT NULL,
-            student_id INTEGER NOT NULL,
-            enroll_date DATE,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
-            FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
-            UNIQUE(course_id, student_id)
+            UNIQUE(student_id, course_id)
         )
     ''')
     
     cursor.execute('CREATE INDEX idx_students_student_no ON students(student_no)')
     cursor.execute('CREATE INDEX idx_grades_student_id ON grades(student_id)')
     cursor.execute('CREATE INDEX idx_grades_course_id ON grades(course_id)')
-    cursor.execute('CREATE INDEX idx_courses_teacher_id ON courses(teacher_id)')
+    cursor.execute('CREATE INDEX idx_teacher_courses_teacher_id ON teacher_courses(teacher_id)')
+    cursor.execute('CREATE INDEX idx_teacher_courses_course_id ON teacher_courses(course_id)')
     
     conn.commit()
     return conn, cursor
@@ -152,28 +141,31 @@ def parse_students(filepath):
                 student_no = parts[0].strip()
                 name = parts[1].strip()
                 class_name = parts[2].strip()
-                department = parts[3].strip()
+                major = parts[3].strip()
                 students.append({
                     'student_no': student_no,
                     'name': name,
                     'class_name': class_name,
-                    'department': department
+                    'major': major
                 })
     return students
 
 def parse_staff(filepath):
-    """解析staff.txt文件"""
+    """解析staff.txt文件，包含教师授课信息"""
     teachers = []
     with open(filepath, 'r', encoding='gbk') as f:
         for line in f:
             line = line.strip()
             if line.startswith('#') or line == '' or line == '#END':
                 continue
+            # 使用空格分割（文件中是用空格分隔的）
             parts = line.split()
+            
             if len(parts) >= 2:
                 teacher_no = parts[0].strip()
                 name = parts[1].strip()
-                courses = [c.strip() for c in parts[2:] if c.strip()]
+                # 第3列及以后是教授的课程
+                courses = parts[2:] if len(parts) > 2 else []
                 teachers.append({
                     'teacher_no': teacher_no,
                     'name': name,
@@ -238,7 +230,6 @@ def parse_scores(filepath):
             parts = line.split('\t')
             if len(parts) >= 4:
                 student_no = parts[0].strip()
-                student_name = parts[1].strip()
                 course_name = parts[2].strip()
                 try:
                     grade = float(parts[3].strip())
@@ -246,7 +237,6 @@ def parse_scores(filepath):
                     grade = 0.0
                 scores.append({
                     'student_no': student_no,
-                    'student_name': student_name,
                     'course_name': course_name,
                     'grade': grade
                 })
@@ -258,12 +248,12 @@ def insert_data(conn, cursor, students, teachers, courses, scores):
     print("正在插入数据...")
     
     admin_salt = generate_salt()
-    admin_password = hash_password('admin123', admin_salt)
+    admin_password = hash_password('123456', admin_salt)
     cursor.execute('''
-        INSERT INTO users (username, password, salt, role) 
+        INSERT INTO users (username, password, salt, role)
         VALUES (?, ?, ?, ?)
     ''', ('admin', admin_password, admin_salt, 'admin'))
-    print("✓ 创建管理员账号: admin / admin123")
+    print("✓ 创建管理员账号: admin / 123456")
     
     student_ids = {}
     for s in students:
@@ -276,15 +266,27 @@ def insert_data(conn, cursor, students, teachers, courses, scores):
         user_id = cursor.lastrowid
         
         cursor.execute('''
-            INSERT INTO students (user_id, student_no, name, department, class_name, age)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (user_id, s['student_no'], s['name'], s['department'], s['class_name'], 20))
+            INSERT INTO students (user_id, student_no, name, class_name, major)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (user_id, s['student_no'], s['name'], s['class_name'], s['major']))
         student_ids[s['student_no']] = cursor.lastrowid
     
     print(f"✓ 创建学生账号: {len(students)} 个 (密码均为: 123456)")
     
+    # 先插入所有课程
+    course_ids = {}
+    for c in courses:
+        cursor.execute('''
+            INSERT INTO courses (course_no, course_name, credit, hours, course_type)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (c['course_no'], c['course_name'], c['credit'], c['hours'], c['course_type']))
+        course_ids[c['course_name']] = cursor.lastrowid
+    
+    print(f"✓ 创建课程: {len(courses)} 门")
+    
+    # 插入教师及其教授的课程
     teacher_ids = {}
-    teacher_course_map = {}
+    teacher_course_count = 0
     for t in teachers:
         salt = generate_salt()
         password = hash_password('123456', salt)
@@ -295,31 +297,27 @@ def insert_data(conn, cursor, students, teachers, courses, scores):
         user_id = cursor.lastrowid
         
         cursor.execute('''
-            INSERT INTO teachers (user_id, teacher_no, name, department, title)
-            VALUES (?, ?, ?, ?, ?)
-        ''', (user_id, t['teacher_no'], t['name'], '信息科学与工程学院', '讲师'))
-        teacher_ids[t['teacher_no']] = cursor.lastrowid
-        teacher_course_map[t['teacher_no']] = t['courses']
+            INSERT INTO teachers (user_id, teacher_no, name)
+            VALUES (?, ?, ?)
+        ''', (user_id, t['teacher_no'], t['name']))
+        teacher_id = cursor.lastrowid
+        teacher_ids[t['teacher_no']] = teacher_id
+        
+        # 插入教师教授的课程关联
+        for course_name in t['courses']:
+            course_id = course_ids.get(course_name)
+            if course_id:
+                try:
+                    cursor.execute('''
+                        INSERT INTO teacher_courses (teacher_id, course_id)
+                        VALUES (?, ?)
+                    ''', (teacher_id, course_id))
+                    teacher_course_count += 1
+                except sqlite3.IntegrityError:
+                    pass  # 已存在的关联，跳过
     
     print(f"✓ 创建教师账号: {len(teachers)} 个 (密码均为: 123456)")
-    
-    course_ids = {}
-    course_teacher_map = {}
-    for c in courses:
-        teacher_id = None
-        for t_no, t_courses in teacher_course_map.items():
-            if c['course_name'] in t_courses:
-                teacher_id = teacher_ids[t_no]
-                course_teacher_map[c['course_name']] = t_no
-                break
-        
-        cursor.execute('''
-            INSERT INTO courses (course_no, course_name, teacher_id, credit, hours, description, course_type)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        ''', (c['course_no'], c['course_name'], teacher_id, c['credit'], c['hours'], '', c['course_type']))
-        course_ids[c['course_name']] = cursor.lastrowid
-    
-    print(f"✓ 创建课程: {len(courses)} 门")
+    print(f"✓ 建立教师-课程关联: {teacher_course_count} 条")
     
     grade_count = 0
     for s in scores:
@@ -329,9 +327,9 @@ def insert_data(conn, cursor, students, teachers, courses, scores):
         if student_id and course_id:
             try:
                 cursor.execute('''
-                    INSERT INTO grades (student_id, course_id, grade, semester, exam_type)
-                    VALUES (?, ?, ?, ?, ?)
-                ''', (student_id, course_id, s['grade'], '2024-2025-1', '期末考试'))
+                    INSERT INTO grades (student_id, course_id, grade)
+                    VALUES (?, ?, ?)
+                ''', (student_id, course_id, s['grade']))
                 grade_count += 1
             except sqlite3.IntegrityError:
                 pass
@@ -358,13 +356,16 @@ def print_summary(cursor):
     cursor.execute("SELECT COUNT(*) FROM courses")
     print(f"课程总数: {cursor.fetchone()[0]}")
     
+    cursor.execute("SELECT COUNT(*) FROM teacher_courses")
+    print(f"教师-课程关联: {cursor.fetchone()[0]}")
+    
     cursor.execute("SELECT COUNT(*) FROM grades")
     print(f"成绩记录: {cursor.fetchone()[0]}")
     
     print("\n" + "="*60)
     print("测试账号信息：")
     print("="*60)
-    print("管理员: admin / admin123")
+    print("管理员: admin / 123456")
     print("教师账号: 教师工号 / 123456")
     print("学生账号: 学号 / 123456")
     print("="*60)

@@ -20,6 +20,11 @@ QVector<Course> CourseController::getAllCourses()
     return m_courseDAO.findAll();
 }
 
+QVector<Course> CourseController::searchCourses(const QString& keyword)
+{
+    return m_courseDAO.search(keyword);
+}
+
 QVector<Course> CourseController::getCoursesByTeacher(int teacherId)
 {
     return m_courseDAO.findByTeacherId(teacherId);

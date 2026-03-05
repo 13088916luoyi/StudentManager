@@ -32,6 +32,7 @@ debug/gradeeditdialog.o
 debug/studentprofiledialog.o
 debug/courseselectiondialog.o
 debug/gradestatsdialog.o
+debug/accountdialog.o
 debug/moc_mainwindow.o
 debug/moc_authcontroller.o
 debug/moc_logindialog.o
@@ -48,3 +49,4 @@ debug/moc_gradeeditdialog.o
 debug/moc_studentprofiledialog.o
 debug/moc_courseselectiondialog.o
 debug/moc_gradestatsdialog.o
+debug/moc_accountdialog.o

@@ -3,8 +3,6 @@
 
 #include <QDialog>
 #include "course.h"
-#include "teacher.h"
-#include <QVector>
 
 namespace Ui {
 class CourseDialog;
@@ -21,7 +19,6 @@ public:
     void setCourse(const Course& course);
     Course getCourse() const;
     void setEditMode(bool edit);
-    void setTeachers(const QVector<Teacher>& teachers);
 
 private:
     Ui::CourseDialog *ui;

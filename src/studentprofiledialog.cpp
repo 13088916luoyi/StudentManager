@@ -17,26 +17,18 @@ StudentProfileDialog::~StudentProfileDialog()
 void StudentProfileDialog::setStudent(const Student& student)
 {
     m_student = student;
-    
+
     ui->studentNoLabel->setText(student.studentNo());
     ui->nameEdit->setText(student.name());
-    ui->genderCombo->setCurrentText(student.gender());
-    ui->ageSpinBox->setValue(student.age());
-    ui->departmentEdit->setText(student.department());
     ui->classEdit->setText(student.className());
-    ui->phoneEdit->setText(student.phone());
-    ui->emailEdit->setText(student.email());
+    ui->majorEdit->setText(student.major());
 }
 
 Student StudentProfileDialog::getStudent() const
 {
     Student student = m_student;
     student.setName(ui->nameEdit->text().trimmed());
-    student.setGender(ui->genderCombo->currentText());
-    student.setAge(ui->ageSpinBox->value());
-    student.setDepartment(ui->departmentEdit->text().trimmed());
     student.setClassName(ui->classEdit->text().trimmed());
-    student.setPhone(ui->phoneEdit->text().trimmed());
-    student.setEmail(ui->emailEdit->text().trimmed());
+    student.setMajor(ui->majorEdit->text().trimmed());
     return student;
 }

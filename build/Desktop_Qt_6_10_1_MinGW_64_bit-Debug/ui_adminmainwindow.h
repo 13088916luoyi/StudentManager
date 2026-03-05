@@ -64,6 +64,8 @@ public:
     QPushButton *deleteTeacherButton;
     QPushButton *refreshTeacherButton;
     QSpacerItem *horizontalSpacer_2;
+    QLabel *label_2;
+    QLineEdit *teacherSearchEdit;
     QTableWidget *teacherTable;
     QWidget *coursePage;
     QVBoxLayout *verticalLayout_4;
@@ -73,6 +75,8 @@ public:
     QPushButton *deleteCourseButton;
     QPushButton *refreshCourseButton;
     QSpacerItem *horizontalSpacer_3;
+    QLabel *label_3;
+    QLineEdit *courseSearchEdit;
     QTableWidget *courseTable;
     QWidget *gradePage;
     QVBoxLayout *verticalLayout_5;
@@ -82,9 +86,19 @@ public:
     QPushButton *deleteGradeButton;
     QPushButton *refreshGradeButton;
     QSpacerItem *horizontalSpacer_4;
+    QLabel *label_4;
+    QLineEdit *gradeSearchEdit;
     QTableWidget *gradeTable;
     QWidget *accountPage;
     QVBoxLayout *verticalLayout_6;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *addAccountButton;
+    QPushButton *editAccountButton;
+    QPushButton *deleteAccountButton;
+    QPushButton *refreshAccountButton;
+    QSpacerItem *horizontalSpacer_5;
+    QLabel *label_5;
+    QLineEdit *accountSearchEdit;
     QTableWidget *accountTable;
     QStatusBar *statusbar;
 
@@ -310,6 +324,19 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
+        label_2 = new QLabel(teacherPage);
+        label_2->setObjectName("label_2");
+        label_2->setFont(font);
+
+        horizontalLayout_2->addWidget(label_2);
+
+        teacherSearchEdit = new QLineEdit(teacherPage);
+        teacherSearchEdit->setObjectName("teacherSearchEdit");
+        teacherSearchEdit->setMinimumSize(QSize(200, 32));
+        teacherSearchEdit->setFont(font);
+
+        horizontalLayout_2->addWidget(teacherSearchEdit);
+
 
         verticalLayout_3->addLayout(horizontalLayout_2);
 
@@ -363,6 +390,19 @@ public:
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        label_3 = new QLabel(coursePage);
+        label_3->setObjectName("label_3");
+        label_3->setFont(font);
+
+        horizontalLayout_3->addWidget(label_3);
+
+        courseSearchEdit = new QLineEdit(coursePage);
+        courseSearchEdit->setObjectName("courseSearchEdit");
+        courseSearchEdit->setMinimumSize(QSize(200, 32));
+        courseSearchEdit->setFont(font);
+
+        horizontalLayout_3->addWidget(courseSearchEdit);
 
 
         verticalLayout_4->addLayout(horizontalLayout_3);
@@ -418,6 +458,19 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_4);
 
+        label_4 = new QLabel(gradePage);
+        label_4->setObjectName("label_4");
+        label_4->setFont(font);
+
+        horizontalLayout_4->addWidget(label_4);
+
+        gradeSearchEdit = new QLineEdit(gradePage);
+        gradeSearchEdit->setObjectName("gradeSearchEdit");
+        gradeSearchEdit->setMinimumSize(QSize(200, 32));
+        gradeSearchEdit->setFont(font);
+
+        horizontalLayout_4->addWidget(gradeSearchEdit);
+
 
         verticalLayout_5->addLayout(horizontalLayout_4);
 
@@ -438,6 +491,56 @@ public:
         verticalLayout_6->setSpacing(8);
         verticalLayout_6->setObjectName("verticalLayout_6");
         verticalLayout_6->setContentsMargins(10, 10, 10, 10);
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        addAccountButton = new QPushButton(accountPage);
+        addAccountButton->setObjectName("addAccountButton");
+        addAccountButton->setMinimumSize(QSize(80, 32));
+        addAccountButton->setFont(font);
+
+        horizontalLayout_5->addWidget(addAccountButton);
+
+        editAccountButton = new QPushButton(accountPage);
+        editAccountButton->setObjectName("editAccountButton");
+        editAccountButton->setMinimumSize(QSize(80, 32));
+        editAccountButton->setFont(font);
+
+        horizontalLayout_5->addWidget(editAccountButton);
+
+        deleteAccountButton = new QPushButton(accountPage);
+        deleteAccountButton->setObjectName("deleteAccountButton");
+        deleteAccountButton->setMinimumSize(QSize(80, 32));
+        deleteAccountButton->setFont(font);
+
+        horizontalLayout_5->addWidget(deleteAccountButton);
+
+        refreshAccountButton = new QPushButton(accountPage);
+        refreshAccountButton->setObjectName("refreshAccountButton");
+        refreshAccountButton->setMinimumSize(QSize(80, 32));
+        refreshAccountButton->setFont(font);
+
+        horizontalLayout_5->addWidget(refreshAccountButton);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
+
+        label_5 = new QLabel(accountPage);
+        label_5->setObjectName("label_5");
+        label_5->setFont(font);
+
+        horizontalLayout_5->addWidget(label_5);
+
+        accountSearchEdit = new QLineEdit(accountPage);
+        accountSearchEdit->setObjectName("accountSearchEdit");
+        accountSearchEdit->setMinimumSize(QSize(200, 32));
+        accountSearchEdit->setFont(font);
+
+        horizontalLayout_5->addWidget(accountSearchEdit);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_5);
+
         accountTable = new QTableWidget(accountPage);
         accountTable->setObjectName("accountTable");
         accountTable->setFont(font1);
@@ -476,23 +579,35 @@ public:
         navAccountButton->setText(QCoreApplication::translate("AdminMainWindow", "  \350\264\246\345\217\267\347\256\241\347\220\206", nullptr));
         logoutButton->setText(QCoreApplication::translate("AdminMainWindow", "  \351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
         addStudentButton->setText(QCoreApplication::translate("AdminMainWindow", "\346\267\273\345\212\240\345\255\246\347\224\237", nullptr));
-        editStudentButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221", nullptr));
-        deleteStudentButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244", nullptr));
+        editStudentButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221\345\255\246\347\224\237", nullptr));
+        deleteStudentButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244\345\255\246\347\224\237", nullptr));
         refreshStudentButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\267\346\226\260", nullptr));
         label->setText(QCoreApplication::translate("AdminMainWindow", "\346\220\234\347\264\242\357\274\232", nullptr));
         studentSearchEdit->setPlaceholderText(QCoreApplication::translate("AdminMainWindow", "\350\276\223\345\205\245\345\255\246\345\217\267\346\210\226\345\247\223\345\220\215", nullptr));
         addTeacherButton->setText(QCoreApplication::translate("AdminMainWindow", "\346\267\273\345\212\240\346\225\231\345\270\210", nullptr));
-        editTeacherButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221", nullptr));
-        deleteTeacherButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244", nullptr));
+        editTeacherButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221\346\225\231\345\270\210", nullptr));
+        deleteTeacherButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244\346\225\231\345\270\210", nullptr));
         refreshTeacherButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\267\346\226\260", nullptr));
+        label_2->setText(QCoreApplication::translate("AdminMainWindow", "\346\220\234\347\264\242\357\274\232", nullptr));
+        teacherSearchEdit->setPlaceholderText(QCoreApplication::translate("AdminMainWindow", "\350\276\223\345\205\245\345\267\245\345\217\267\346\210\226\345\247\223\345\220\215", nullptr));
         addCourseButton->setText(QCoreApplication::translate("AdminMainWindow", "\346\267\273\345\212\240\350\257\276\347\250\213", nullptr));
-        editCourseButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221", nullptr));
-        deleteCourseButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244", nullptr));
+        editCourseButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221\350\257\276\347\250\213", nullptr));
+        deleteCourseButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244\350\257\276\347\250\213", nullptr));
         refreshCourseButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\267\346\226\260", nullptr));
+        label_3->setText(QCoreApplication::translate("AdminMainWindow", "\346\220\234\347\264\242\357\274\232", nullptr));
+        courseSearchEdit->setPlaceholderText(QCoreApplication::translate("AdminMainWindow", "\350\276\223\345\205\245\350\257\276\347\250\213\345\217\267\346\210\226\350\257\276\347\250\213\345\220\215", nullptr));
         addGradeButton->setText(QCoreApplication::translate("AdminMainWindow", "\346\267\273\345\212\240\346\210\220\347\273\251", nullptr));
-        editGradeButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221", nullptr));
-        deleteGradeButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244", nullptr));
+        editGradeButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221\346\210\220\347\273\251", nullptr));
+        deleteGradeButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244\346\210\220\347\273\251", nullptr));
         refreshGradeButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\267\346\226\260", nullptr));
+        label_4->setText(QCoreApplication::translate("AdminMainWindow", "\346\220\234\347\264\242\357\274\232", nullptr));
+        gradeSearchEdit->setPlaceholderText(QCoreApplication::translate("AdminMainWindow", "\350\276\223\345\205\245\345\255\246\345\217\267\343\200\201\345\247\223\345\220\215\343\200\201\350\257\276\347\250\213\345\217\267\346\210\226\350\257\276\347\250\213\345\220\215", nullptr));
+        addAccountButton->setText(QCoreApplication::translate("AdminMainWindow", "\346\267\273\345\212\240\350\264\246\345\217\267", nullptr));
+        editAccountButton->setText(QCoreApplication::translate("AdminMainWindow", "\347\274\226\350\276\221\350\264\246\345\217\267", nullptr));
+        deleteAccountButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\240\351\231\244\350\264\246\345\217\267", nullptr));
+        refreshAccountButton->setText(QCoreApplication::translate("AdminMainWindow", "\345\210\267\346\226\260", nullptr));
+        label_5->setText(QCoreApplication::translate("AdminMainWindow", "\346\220\234\347\264\242\357\274\232", nullptr));
+        accountSearchEdit->setPlaceholderText(QCoreApplication::translate("AdminMainWindow", "\350\276\223\345\205\245\350\264\246\345\217\267\346\220\234\347\264\242", nullptr));
     } // retranslateUi
 
 };

@@ -2,6 +2,7 @@
 #define COURSESELECTIONDIALOG_H
 
 #include <QDialog>
+#include <QVector>
 #include "course.h"
 
 namespace Ui {
@@ -16,8 +17,15 @@ public:
     explicit CourseSelectionDialog(QWidget *parent = nullptr);
     ~CourseSelectionDialog();
 
-    void setAvailableCourses(const QVector<Course>& courses);
-    int getSelectedCourseId() const;
+    void setCourses(const QVector<Course>& courses);
+    void setSelectedCourseIds(const QVector<int>& courseIds);
+    QVector<int> getSelectedCourseIds() const;
+
+private slots:
+    void onSelectAllClicked();
+    void onDeselectAllClicked();
+    void onSelectionChanged();
+    void updateSelectedCount();
 
 private:
     Ui::CourseSelectionDialog *ui;

@@ -17,26 +17,22 @@ public:
     QString courseName() const { return m_courseName; }
     void setCourseName(const QString& courseName) { m_courseName = courseName; }
 
-    int teacherId() const { return m_teacherId; }
-    void setTeacherId(int teacherId) { m_teacherId = teacherId; }
-
     double credit() const { return m_credit; }
     void setCredit(double credit) { m_credit = credit; }
 
     int hours() const { return m_hours; }
     void setHours(int hours) { m_hours = hours; }
 
-    QString description() const { return m_description; }
-    void setDescription(const QString& description) { m_description = description; }
+    QString courseType() const { return m_courseType; }
+    void setCourseType(const QString& courseType) { m_courseType = courseType; }
 
 private:
     int m_id = 0;
     QString m_courseNo;
     QString m_courseName;
-    int m_teacherId = 0;
     double m_credit = 0.0;
     int m_hours = 0;
-    QString m_description;
+    QString m_courseType;
 };
 
 #endif // COURSE_H

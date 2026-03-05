@@ -12,6 +12,8 @@ public:
 
     bool insert(const User& user);
     bool update(const User& user);
+    bool updateWithPassword(const User& user);
+    bool updateRole(const User& user);
     bool remove(int id);
     std::optional<User> findById(int id);
     QVector<User> findAll();

@@ -38,6 +38,36 @@ bool UserDAO::update(const User& user)
     return true;
 }
 
+bool UserDAO::updateWithPassword(const User& user)
+{
+    QSqlQuery query(DatabaseManager::instance().database());
+    query.prepare("UPDATE users SET password=:password, salt=:salt, role=:role WHERE id=:id");
+    query.bindValue(":password", user.password());
+    query.bindValue(":salt", user.salt());
+    query.bindValue(":role", user.role());
+    query.bindValue(":id", user.id());
+
+    if (!query.exec()) {
+        qDebug() << "更新用户密码失败:" << query.lastError().text();
+        return false;
+    }
+    return true;
+}
+
+bool UserDAO::updateRole(const User& user)
+{
+    QSqlQuery query(DatabaseManager::instance().database());
+    query.prepare("UPDATE users SET role=:role WHERE id=:id");
+    query.bindValue(":role", user.role());
+    query.bindValue(":id", user.id());
+
+    if (!query.exec()) {
+        qDebug() << "更新用户角色失败:" << query.lastError().text();
+        return false;
+    }
+    return true;
+}
+
 bool UserDAO::remove(int id)
 {
     QSqlQuery query(DatabaseManager::instance().database());

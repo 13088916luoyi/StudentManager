@@ -57,18 +57,10 @@ public:
     QLabel *studentNoLabel;
     QLabel *label_2;
     QLabel *nameLabel;
-    QLabel *label_3;
-    QLabel *genderLabel;
-    QLabel *label_4;
-    QLabel *ageLabel;
-    QLabel *label_5;
-    QLabel *departmentLabel;
-    QLabel *label_6;
+    QLabel *label_class;
     QLabel *classLabel;
-    QLabel *label_7;
-    QLabel *phoneLabel;
-    QLabel *label_8;
-    QLabel *emailLabel;
+    QLabel *label_major;
+    QLabel *majorLabel;
     QSpacerItem *verticalSpacer;
     QWidget *coursesPage;
     QVBoxLayout *verticalLayout_3;
@@ -261,77 +253,29 @@ public:
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, nameLabel);
 
-        label_3 = new QLabel(groupBox);
-        label_3->setObjectName("label_3");
-        label_3->setFont(font2);
+        label_class = new QLabel(groupBox);
+        label_class->setObjectName("label_class");
+        label_class->setFont(font2);
 
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_3);
-
-        genderLabel = new QLabel(groupBox);
-        genderLabel->setObjectName("genderLabel");
-        genderLabel->setFont(font2);
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, genderLabel);
-
-        label_4 = new QLabel(groupBox);
-        label_4->setObjectName("label_4");
-        label_4->setFont(font2);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_4);
-
-        ageLabel = new QLabel(groupBox);
-        ageLabel->setObjectName("ageLabel");
-        ageLabel->setFont(font2);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, ageLabel);
-
-        label_5 = new QLabel(groupBox);
-        label_5->setObjectName("label_5");
-        label_5->setFont(font2);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_5);
-
-        departmentLabel = new QLabel(groupBox);
-        departmentLabel->setObjectName("departmentLabel");
-        departmentLabel->setFont(font2);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, departmentLabel);
-
-        label_6 = new QLabel(groupBox);
-        label_6->setObjectName("label_6");
-        label_6->setFont(font2);
-
-        formLayout->setWidget(5, QFormLayout::ItemRole::LabelRole, label_6);
+        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_class);
 
         classLabel = new QLabel(groupBox);
         classLabel->setObjectName("classLabel");
         classLabel->setFont(font2);
 
-        formLayout->setWidget(5, QFormLayout::ItemRole::FieldRole, classLabel);
+        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, classLabel);
 
-        label_7 = new QLabel(groupBox);
-        label_7->setObjectName("label_7");
-        label_7->setFont(font2);
+        label_major = new QLabel(groupBox);
+        label_major->setObjectName("label_major");
+        label_major->setFont(font2);
 
-        formLayout->setWidget(6, QFormLayout::ItemRole::LabelRole, label_7);
+        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_major);
 
-        phoneLabel = new QLabel(groupBox);
-        phoneLabel->setObjectName("phoneLabel");
-        phoneLabel->setFont(font2);
+        majorLabel = new QLabel(groupBox);
+        majorLabel->setObjectName("majorLabel");
+        majorLabel->setFont(font2);
 
-        formLayout->setWidget(6, QFormLayout::ItemRole::FieldRole, phoneLabel);
-
-        label_8 = new QLabel(groupBox);
-        label_8->setObjectName("label_8");
-        label_8->setFont(font2);
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::LabelRole, label_8);
-
-        emailLabel = new QLabel(groupBox);
-        emailLabel->setObjectName("emailLabel");
-        emailLabel->setFont(font2);
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::FieldRole, emailLabel);
+        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, majorLabel);
 
 
         verticalLayout_2->addWidget(groupBox);
@@ -552,18 +496,10 @@ public:
         studentNoLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
         label_2->setText(QCoreApplication::translate("StudentMainWindow", "\345\247\223\345\220\215\357\274\232", nullptr));
         nameLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
-        label_3->setText(QCoreApplication::translate("StudentMainWindow", "\346\200\247\345\210\253\357\274\232", nullptr));
-        genderLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
-        label_4->setText(QCoreApplication::translate("StudentMainWindow", "\345\271\264\351\276\204\357\274\232", nullptr));
-        ageLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
-        label_5->setText(QCoreApplication::translate("StudentMainWindow", "\351\231\242\347\263\273\357\274\232", nullptr));
-        departmentLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
-        label_6->setText(QCoreApplication::translate("StudentMainWindow", "\347\217\255\347\272\247\357\274\232", nullptr));
+        label_class->setText(QCoreApplication::translate("StudentMainWindow", "\347\217\255\347\272\247\357\274\232", nullptr));
         classLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
-        label_7->setText(QCoreApplication::translate("StudentMainWindow", "\347\224\265\350\257\235\357\274\232", nullptr));
-        phoneLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
-        label_8->setText(QCoreApplication::translate("StudentMainWindow", "\351\202\256\347\256\261\357\274\232", nullptr));
-        emailLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
+        label_major->setText(QCoreApplication::translate("StudentMainWindow", "\344\270\223\344\270\232\357\274\232", nullptr));
+        majorLabel->setText(QCoreApplication::translate("StudentMainWindow", "-", nullptr));
         myCoursesLabel->setText(QCoreApplication::translate("StudentMainWindow", "\345\267\262\351\200\211\350\257\276\347\250\213\345\210\227\350\241\250", nullptr));
         dropCourseButton->setText(QCoreApplication::translate("StudentMainWindow", "\351\200\200\350\257\276", nullptr));
         refreshMyCoursesButton->setText(QCoreApplication::translate("StudentMainWindow", "\345\210\267\346\226\260", nullptr));

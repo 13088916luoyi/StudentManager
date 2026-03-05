@@ -7,28 +7,96 @@
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>450</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>编辑个人信息</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f5f5f5;
+}
+QLabel {
+    font-size: 13px;
+    color: #333333;
+    font-weight: bold;
+}
+QLineEdit {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 13px;
+}
+QLineEdit:focus {
+    border: 2px solid #4a90d9;
+}
+QGroupBox {
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+}
+QPushButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 80px;
+}
+QPushButton[text="确定"], QPushButton[text="OK"] {
+    background-color: #4a90d9;
+    color: white;
+}
+QPushButton[text="确定"]:hover, QPushButton[text="OK"]:hover {
+    background-color: #3a7bc8;
+}
+QPushButton[text="取消"], QPushButton[text="Cancel"] {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+QPushButton[text="取消"]:hover, QPushButton[text="Cancel"]:hover {
+    background-color: #d0d0d0;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>15</number>
    </property>
    <property name="leftMargin">
-    <number>20</number>
+    <number>25</number>
    </property>
    <property name="topMargin">
-    <number>20</number>
+    <number>25</number>
    </property>
    <property name="rightMargin">
-    <number>20</number>
+    <number>25</number>
    </property>
    <property name="bottomMargin">
-    <number>20</number>
+    <number>25</number>
    </property>
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="styleSheet">
+      <string notr="true">font-size: 18px; font-weight: bold; color: #4a90d9; margin-bottom: 10px;</string>
+     </property>
+     <property name="text">
+      <string>编辑个人信息</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
@@ -45,6 +113,9 @@
       </property>
       <property name="verticalSpacing">
        <number>12</number>
+      </property>
+      <property name="labelAlignment">
+       <set>Qt::AlignRight|Qt::AlignVCenter</set>
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_studentNo">
@@ -92,88 +163,18 @@
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="placeholderText">
+         <string>请输入姓名</string>
+        </property>
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_gender">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>性别：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="genderCombo">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>男</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>女</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_age">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>年龄：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QSpinBox" name="ageSpinBox">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="minimum">
-         <number>16</number>
-        </property>
-        <property name="maximum">
-         <number>100</number>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_department">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>院系：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="departmentEdit">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
        <widget class="QLabel" name="label_class">
         <property name="font">
          <font>
@@ -185,59 +186,69 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="2" column="1">
        <widget class="QLineEdit" name="classEdit">
         <property name="font">
          <font>
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="placeholderText">
+         <string>请输入班级</string>
+        </property>
        </widget>
       </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_phone">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_major">
         <property name="font">
          <font>
           <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>电话：</string>
+         <string>专业：</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="phoneEdit">
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="majorEdit">
         <property name="font">
          <font>
           <pointsize>11</pointsize>
          </font>
         </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_email">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>35</height>
+         </size>
         </property>
-        <property name="text">
-         <string>邮箱：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLineEdit" name="emailEdit">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
+        <property name="placeholderText">
+         <string>请输入专业</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
@@ -246,6 +257,9 @@
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+     <property name="centerButtons">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

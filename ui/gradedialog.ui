@@ -6,16 +6,96 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>320</height>
+    <width>450</width>
+    <height>280</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>成绩信息</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f5f5f5;
+}
+QLabel {
+    font-size: 13px;
+    color: #333333;
+    font-weight: bold;
+}
+QComboBox, QDoubleSpinBox {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 13px;
+    min-height: 35px;
+}
+QComboBox:focus, QDoubleSpinBox:focus {
+    border: 2px solid #4a90d9;
+}
+QPushButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 80px;
+}
+QPushButton[text="确定"], QPushButton[text="OK"] {
+    background-color: #4a90d9;
+    color: white;
+}
+QPushButton[text="确定"]:hover, QPushButton[text="OK"]:hover {
+    background-color: #3a7bc8;
+}
+QPushButton[text="取消"], QPushButton[text="Cancel"] {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+QPushButton[text="取消"]:hover, QPushButton[text="Cancel"]:hover {
+    background-color: #d0d0d0;
+}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
+   <property name="leftMargin">
+    <number>25</number>
+   </property>
+   <property name="topMargin">
+    <number>25</number>
+   </property>
+   <property name="rightMargin">
+    <number>25</number>
+   </property>
+   <property name="bottomMargin">
+    <number>25</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="styleSheet">
+      <string notr="true">font-size: 18px; font-weight: bold; color: #4a90d9; margin-bottom: 10px;</string>
+     </property>
+     <property name="text">
+      <string>成绩信息</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
    <item>
     <layout class="QFormLayout" name="formLayout">
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <property name="labelAlignment">
+      <set>Qt::AlignRight|Qt::AlignVCenter</set>
+     </property>
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::ExpandingFieldsGrow</enum>
+     </property>
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
@@ -24,7 +104,14 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="studentComboBox"/>
+      <widget class="QComboBox" name="studentComboBox">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -34,7 +121,14 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="courseComboBox"/>
+      <widget class="QComboBox" name="courseComboBox">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
@@ -45,6 +139,12 @@
      </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="gradeSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>35</height>
+        </size>
+       </property>
        <property name="minimum">
         <double>0.000000000000000</double>
        </property>
@@ -56,75 +156,20 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>学期：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="semesterComboBox">
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>2024-2025-1</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2024-2025-2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2025-2026-1</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>考试类型：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QComboBox" name="examTypeComboBox">
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>期末考试</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>期中考试</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>平时成绩</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>备注：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="remarksEdit"/>
-     </item>
     </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
@@ -133,6 +178,9 @@
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+     <property name="centerButtons">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

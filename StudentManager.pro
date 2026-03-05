@@ -40,7 +40,8 @@ SOURCES += \
     src/gradeeditdialog.cpp \
     src/studentprofiledialog.cpp \
     src/courseselectiondialog.cpp \
-    src/gradestatsdialog.cpp
+    src/gradestatsdialog.cpp \
+    src/accountdialog.cpp
 
 HEADERS += \
     include/mainwindow.h \
@@ -75,7 +76,8 @@ HEADERS += \
     include/gradeeditdialog.h \
     include/studentprofiledialog.h \
     include/courseselectiondialog.h \
-    include/gradestatsdialog.h
+    include/gradestatsdialog.h \
+    include/accountdialog.h
 
 FORMS += \
     ui/mainwindow.ui \
@@ -92,7 +94,8 @@ FORMS += \
     ui/gradeeditdialog.ui \
     ui/studentprofiledialog.ui \
     ui/courseselectiondialog.ui \
-    ui/gradestatsdialog.ui
+    ui/gradestatsdialog.ui \
+    ui/accountdialog.ui
 
 qnx: target.path = /tmp/${TARGET}/bin
 else: unix:!android: target.path = /opt/${TARGET}/bin

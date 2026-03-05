@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../registerdialog.h"
+#include "../../../include/registerdialog.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

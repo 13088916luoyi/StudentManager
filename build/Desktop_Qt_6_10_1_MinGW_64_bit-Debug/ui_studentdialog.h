@@ -12,13 +12,12 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -27,34 +26,81 @@ class Ui_StudentDialog
 {
 public:
     QVBoxLayout *verticalLayout;
+    QLabel *titleLabel;
     QFormLayout *formLayout;
     QLabel *label;
     QLineEdit *studentNoEdit;
     QLabel *label_2;
     QLineEdit *nameEdit;
-    QLabel *label_3;
-    QComboBox *genderComboBox;
-    QLabel *label_4;
-    QSpinBox *ageSpinBox;
     QLabel *label_5;
-    QComboBox *departmentComboBox;
+    QLineEdit *departmentEdit;
     QLabel *label_6;
-    QComboBox *classComboBox;
-    QLabel *label_7;
-    QLineEdit *phoneEdit;
-    QLabel *label_8;
-    QLineEdit *emailEdit;
+    QLineEdit *classEdit;
+    QSpacerItem *verticalSpacer;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *StudentDialog)
     {
         if (StudentDialog->objectName().isEmpty())
             StudentDialog->setObjectName("StudentDialog");
-        StudentDialog->resize(400, 400);
+        StudentDialog->resize(450, 280);
+        StudentDialog->setStyleSheet(QString::fromUtf8("QDialog {\n"
+"    background-color: #f5f5f5;\n"
+"}\n"
+"QLabel {\n"
+"    font-size: 13px;\n"
+"    color: #333333;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QLineEdit {\n"
+"    padding: 8px;\n"
+"    border: 1px solid #cccccc;\n"
+"    border-radius: 4px;\n"
+"    background-color: white;\n"
+"    font-size: 13px;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #4a90d9;\n"
+"}\n"
+"QPushButton {\n"
+"    padding: 10px 20px;\n"
+"    border: none;\n"
+"    border-radius: 4px;\n"
+"    font-size: 13px;\n"
+"    font-weight: bold;\n"
+"    min-width: 80px;\n"
+"}\n"
+"QPushButton[text=\"\347\241\256\345\256\232\"], QPushButton[text=\"OK\"] {\n"
+"    background-color: #4a90d9;\n"
+"    color: white;\n"
+"}\n"
+"QPushButton[text=\"\347\241\256\345\256\232\"]:hover, QPushButton[text=\"OK\"]:hover {\n"
+"    background-color: #3a7bc8;\n"
+"}\n"
+"QPushButton[text=\"\345\217\226\346\266\210\"], QPushButton[text=\"Cancel\"] {\n"
+"    background-color: #e0e0e0;\n"
+"    color: #333333;\n"
+"}\n"
+"QPushButton[text=\"\345\217\226\346\266\210\"]"
+                        ":hover, QPushButton[text=\"Cancel\"]:hover {\n"
+"    background-color: #d0d0d0;\n"
+"}"));
         verticalLayout = new QVBoxLayout(StudentDialog);
+        verticalLayout->setSpacing(15);
         verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(25, 25, 25, 25);
+        titleLabel = new QLabel(StudentDialog);
+        titleLabel->setObjectName("titleLabel");
+        titleLabel->setStyleSheet(QString::fromUtf8("font-size: 18px; font-weight: bold; color: #4a90d9; margin-bottom: 10px;"));
+        titleLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(titleLabel);
+
         formLayout = new QFormLayout();
+        formLayout->setSpacing(12);
         formLayout->setObjectName("formLayout");
+        formLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        formLayout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
         label = new QLabel(StudentDialog);
         label->setObjectName("label");
 
@@ -62,6 +108,7 @@ public:
 
         studentNoEdit = new QLineEdit(StudentDialog);
         studentNoEdit->setObjectName("studentNoEdit");
+        studentNoEdit->setMinimumSize(QSize(250, 35));
 
         formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, studentNoEdit);
 
@@ -72,92 +119,44 @@ public:
 
         nameEdit = new QLineEdit(StudentDialog);
         nameEdit->setObjectName("nameEdit");
+        nameEdit->setMinimumSize(QSize(250, 35));
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, nameEdit);
-
-        label_3 = new QLabel(StudentDialog);
-        label_3->setObjectName("label_3");
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_3);
-
-        genderComboBox = new QComboBox(StudentDialog);
-        genderComboBox->addItem(QString());
-        genderComboBox->addItem(QString());
-        genderComboBox->setObjectName("genderComboBox");
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, genderComboBox);
-
-        label_4 = new QLabel(StudentDialog);
-        label_4->setObjectName("label_4");
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_4);
-
-        ageSpinBox = new QSpinBox(StudentDialog);
-        ageSpinBox->setObjectName("ageSpinBox");
-        ageSpinBox->setMinimum(1);
-        ageSpinBox->setMaximum(100);
-        ageSpinBox->setValue(20);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, ageSpinBox);
 
         label_5 = new QLabel(StudentDialog);
         label_5->setObjectName("label_5");
 
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_5);
+        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_5);
 
-        departmentComboBox = new QComboBox(StudentDialog);
-        departmentComboBox->addItem(QString());
-        departmentComboBox->addItem(QString());
-        departmentComboBox->addItem(QString());
-        departmentComboBox->addItem(QString());
-        departmentComboBox->addItem(QString());
-        departmentComboBox->setObjectName("departmentComboBox");
-        departmentComboBox->setEditable(true);
+        departmentEdit = new QLineEdit(StudentDialog);
+        departmentEdit->setObjectName("departmentEdit");
+        departmentEdit->setMinimumSize(QSize(250, 35));
 
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, departmentComboBox);
+        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, departmentEdit);
 
         label_6 = new QLabel(StudentDialog);
         label_6->setObjectName("label_6");
 
-        formLayout->setWidget(5, QFormLayout::ItemRole::LabelRole, label_6);
+        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_6);
 
-        classComboBox = new QComboBox(StudentDialog);
-        classComboBox->addItem(QString());
-        classComboBox->addItem(QString());
-        classComboBox->addItem(QString());
-        classComboBox->addItem(QString());
-        classComboBox->setObjectName("classComboBox");
-        classComboBox->setEditable(true);
+        classEdit = new QLineEdit(StudentDialog);
+        classEdit->setObjectName("classEdit");
+        classEdit->setMinimumSize(QSize(250, 35));
 
-        formLayout->setWidget(5, QFormLayout::ItemRole::FieldRole, classComboBox);
-
-        label_7 = new QLabel(StudentDialog);
-        label_7->setObjectName("label_7");
-
-        formLayout->setWidget(6, QFormLayout::ItemRole::LabelRole, label_7);
-
-        phoneEdit = new QLineEdit(StudentDialog);
-        phoneEdit->setObjectName("phoneEdit");
-
-        formLayout->setWidget(6, QFormLayout::ItemRole::FieldRole, phoneEdit);
-
-        label_8 = new QLabel(StudentDialog);
-        label_8->setObjectName("label_8");
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::LabelRole, label_8);
-
-        emailEdit = new QLineEdit(StudentDialog);
-        emailEdit->setObjectName("emailEdit");
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::FieldRole, emailEdit);
+        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, classEdit);
 
 
         verticalLayout->addLayout(formLayout);
+
+        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
 
         buttonBox = new QDialogButtonBox(StudentDialog);
         buttonBox->setObjectName("buttonBox");
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox->setCenterButtons(true);
 
         verticalLayout->addWidget(buttonBox);
 
@@ -172,28 +171,15 @@ public:
     void retranslateUi(QDialog *StudentDialog)
     {
         StudentDialog->setWindowTitle(QCoreApplication::translate("StudentDialog", "\345\255\246\347\224\237\344\277\241\346\201\257", nullptr));
+        titleLabel->setText(QCoreApplication::translate("StudentDialog", "\345\255\246\347\224\237\344\277\241\346\201\257", nullptr));
         label->setText(QCoreApplication::translate("StudentDialog", "\345\255\246\345\217\267\357\274\232", nullptr));
+        studentNoEdit->setPlaceholderText(QCoreApplication::translate("StudentDialog", "\350\257\267\350\276\223\345\205\245\345\255\246\345\217\267", nullptr));
         label_2->setText(QCoreApplication::translate("StudentDialog", "\345\247\223\345\220\215\357\274\232", nullptr));
-        label_3->setText(QCoreApplication::translate("StudentDialog", "\346\200\247\345\210\253\357\274\232", nullptr));
-        genderComboBox->setItemText(0, QCoreApplication::translate("StudentDialog", "\347\224\267", nullptr));
-        genderComboBox->setItemText(1, QCoreApplication::translate("StudentDialog", "\345\245\263", nullptr));
-
-        label_4->setText(QCoreApplication::translate("StudentDialog", "\345\271\264\351\276\204\357\274\232", nullptr));
-        label_5->setText(QCoreApplication::translate("StudentDialog", "\351\231\242\347\263\273\357\274\232", nullptr));
-        departmentComboBox->setItemText(0, QCoreApplication::translate("StudentDialog", "\350\256\241\347\256\227\346\234\272\345\255\246\351\231\242", nullptr));
-        departmentComboBox->setItemText(1, QCoreApplication::translate("StudentDialog", "\346\225\260\345\255\246\345\255\246\351\231\242", nullptr));
-        departmentComboBox->setItemText(2, QCoreApplication::translate("StudentDialog", "\347\211\251\347\220\206\345\255\246\351\231\242", nullptr));
-        departmentComboBox->setItemText(3, QCoreApplication::translate("StudentDialog", "\345\244\226\345\233\275\350\257\255\345\255\246\351\231\242", nullptr));
-        departmentComboBox->setItemText(4, QCoreApplication::translate("StudentDialog", "\347\273\217\346\265\216\347\256\241\347\220\206\345\255\246\351\231\242", nullptr));
-
+        nameEdit->setPlaceholderText(QCoreApplication::translate("StudentDialog", "\350\257\267\350\276\223\345\205\245\345\247\223\345\220\215", nullptr));
+        label_5->setText(QCoreApplication::translate("StudentDialog", "\344\270\223\344\270\232\357\274\232", nullptr));
+        departmentEdit->setPlaceholderText(QCoreApplication::translate("StudentDialog", "\350\257\267\350\276\223\345\205\245\344\270\223\344\270\232", nullptr));
         label_6->setText(QCoreApplication::translate("StudentDialog", "\347\217\255\347\272\247\357\274\232", nullptr));
-        classComboBox->setItemText(0, QCoreApplication::translate("StudentDialog", "\350\275\257\344\273\2661\347\217\255", nullptr));
-        classComboBox->setItemText(1, QCoreApplication::translate("StudentDialog", "\350\275\257\344\273\2662\347\217\255", nullptr));
-        classComboBox->setItemText(2, QCoreApplication::translate("StudentDialog", "\350\256\241\347\256\227\346\234\2721\347\217\255", nullptr));
-        classComboBox->setItemText(3, QCoreApplication::translate("StudentDialog", "\350\256\241\347\256\227\346\234\2722\347\217\255", nullptr));
-
-        label_7->setText(QCoreApplication::translate("StudentDialog", "\347\224\265\350\257\235\357\274\232", nullptr));
-        label_8->setText(QCoreApplication::translate("StudentDialog", "\351\202\256\347\256\261\357\274\232", nullptr));
+        classEdit->setPlaceholderText(QCoreApplication::translate("StudentDialog", "\350\257\267\350\276\223\345\205\245\347\217\255\347\272\247", nullptr));
     } // retranslateUi
 
 };

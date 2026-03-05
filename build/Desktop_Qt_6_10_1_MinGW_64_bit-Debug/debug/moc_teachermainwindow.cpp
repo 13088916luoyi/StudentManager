@@ -39,8 +39,9 @@ template <> constexpr inline auto TeacherMainWindow::qt_create_metaobjectdata<qt
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "TeacherMainWindow",
-        "onNavProfileClicked",
+        "logoutRequested",
         "",
+        "onNavProfileClicked",
         "onNavCoursesClicked",
         "onLogoutClicked",
         "onEditProfileClicked",
@@ -48,26 +49,40 @@ template <> constexpr inline auto TeacherMainWindow::qt_create_metaobjectdata<qt
         "row",
         "column",
         "onEditGradeClicked",
-        "onViewStatsClicked"
+        "onViewStatsClicked",
+        "onCourseTableItemEntered",
+        "QTableWidgetItem*",
+        "item",
+        "onCourseStudentTableItemEntered"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Signal 'logoutRequested'
+        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onNavProfileClicked'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onNavCoursesClicked'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onLogoutClicked'
+        // Slot 'onNavCoursesClicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onEditProfileClicked'
+        // Slot 'onLogoutClicked'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onEditProfileClicked'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onCourseDoubleClicked'
-        QtMocHelpers::SlotData<void(int, int)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 7 }, { QMetaType::Int, 8 },
+        QtMocHelpers::SlotData<void(int, int)>(7, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 8 }, { QMetaType::Int, 9 },
         }}),
         // Slot 'onEditGradeClicked'
-        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onViewStatsClicked'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onViewStatsClicked'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onCourseTableItemEntered'
+        QtMocHelpers::SlotData<void(QTableWidgetItem *)>(12, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 13, 14 },
+        }}),
+        // Slot 'onCourseStudentTableItemEntered'
+        QtMocHelpers::SlotData<void(QTableWidgetItem *)>(15, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 13, 14 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -91,15 +106,22 @@ void TeacherMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     auto *_t = static_cast<TeacherMainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->onNavProfileClicked(); break;
-        case 1: _t->onNavCoursesClicked(); break;
-        case 2: _t->onLogoutClicked(); break;
-        case 3: _t->onEditProfileClicked(); break;
-        case 4: _t->onCourseDoubleClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
-        case 5: _t->onEditGradeClicked(); break;
-        case 6: _t->onViewStatsClicked(); break;
+        case 0: _t->logoutRequested(); break;
+        case 1: _t->onNavProfileClicked(); break;
+        case 2: _t->onNavCoursesClicked(); break;
+        case 3: _t->onLogoutClicked(); break;
+        case 4: _t->onEditProfileClicked(); break;
+        case 5: _t->onCourseDoubleClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 6: _t->onEditGradeClicked(); break;
+        case 7: _t->onViewStatsClicked(); break;
+        case 8: _t->onCourseTableItemEntered((*reinterpret_cast<std::add_pointer_t<QTableWidgetItem*>>(_a[1]))); break;
+        case 9: _t->onCourseStudentTableItemEntered((*reinterpret_cast<std::add_pointer_t<QTableWidgetItem*>>(_a[1]))); break;
         default: ;
         }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (TeacherMainWindow::*)()>(_a, &TeacherMainWindow::logoutRequested, 0))
+            return;
     }
 }
 
@@ -122,15 +144,21 @@ int TeacherMainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 10;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 10;
     }
     return _id;
+}
+
+// SIGNAL 0
+void TeacherMainWindow::logoutRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

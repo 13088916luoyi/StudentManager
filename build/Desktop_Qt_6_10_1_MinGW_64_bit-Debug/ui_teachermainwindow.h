@@ -55,18 +55,8 @@ public:
     QLabel *teacherNoLabel;
     QLabel *label_2;
     QLabel *nameLabel;
-    QLabel *label_3;
-    QLabel *genderLabel;
-    QLabel *label_4;
-    QLabel *ageLabel;
-    QLabel *label_5;
-    QLabel *departmentLabel;
-    QLabel *label_6;
-    QLabel *titleLabelValue;
-    QLabel *label_7;
-    QLabel *phoneLabel;
-    QLabel *label_8;
-    QLabel *emailLabel;
+    QLabel *label_courses;
+    QLabel *coursesLabel;
     QSpacerItem *verticalSpacer;
     QWidget *coursesPage;
     QVBoxLayout *verticalLayout_3;
@@ -234,77 +224,18 @@ public:
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, nameLabel);
 
-        label_3 = new QLabel(groupBox);
-        label_3->setObjectName("label_3");
-        label_3->setFont(font2);
+        label_courses = new QLabel(groupBox);
+        label_courses->setObjectName("label_courses");
+        label_courses->setFont(font2);
 
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_3);
+        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_courses);
 
-        genderLabel = new QLabel(groupBox);
-        genderLabel->setObjectName("genderLabel");
-        genderLabel->setFont(font2);
+        coursesLabel = new QLabel(groupBox);
+        coursesLabel->setObjectName("coursesLabel");
+        coursesLabel->setFont(font2);
+        coursesLabel->setWordWrap(true);
 
-        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, genderLabel);
-
-        label_4 = new QLabel(groupBox);
-        label_4->setObjectName("label_4");
-        label_4->setFont(font2);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_4);
-
-        ageLabel = new QLabel(groupBox);
-        ageLabel->setObjectName("ageLabel");
-        ageLabel->setFont(font2);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, ageLabel);
-
-        label_5 = new QLabel(groupBox);
-        label_5->setObjectName("label_5");
-        label_5->setFont(font2);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_5);
-
-        departmentLabel = new QLabel(groupBox);
-        departmentLabel->setObjectName("departmentLabel");
-        departmentLabel->setFont(font2);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, departmentLabel);
-
-        label_6 = new QLabel(groupBox);
-        label_6->setObjectName("label_6");
-        label_6->setFont(font2);
-
-        formLayout->setWidget(5, QFormLayout::ItemRole::LabelRole, label_6);
-
-        titleLabelValue = new QLabel(groupBox);
-        titleLabelValue->setObjectName("titleLabelValue");
-        titleLabelValue->setFont(font2);
-
-        formLayout->setWidget(5, QFormLayout::ItemRole::FieldRole, titleLabelValue);
-
-        label_7 = new QLabel(groupBox);
-        label_7->setObjectName("label_7");
-        label_7->setFont(font2);
-
-        formLayout->setWidget(6, QFormLayout::ItemRole::LabelRole, label_7);
-
-        phoneLabel = new QLabel(groupBox);
-        phoneLabel->setObjectName("phoneLabel");
-        phoneLabel->setFont(font2);
-
-        formLayout->setWidget(6, QFormLayout::ItemRole::FieldRole, phoneLabel);
-
-        label_8 = new QLabel(groupBox);
-        label_8->setObjectName("label_8");
-        label_8->setFont(font2);
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::LabelRole, label_8);
-
-        emailLabel = new QLabel(groupBox);
-        emailLabel->setObjectName("emailLabel");
-        emailLabel->setFont(font2);
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::FieldRole, emailLabel);
+        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, coursesLabel);
 
 
         verticalLayout_2->addWidget(groupBox);
@@ -443,18 +374,8 @@ public:
         teacherNoLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
         label_2->setText(QCoreApplication::translate("TeacherMainWindow", "\345\247\223\345\220\215\357\274\232", nullptr));
         nameLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
-        label_3->setText(QCoreApplication::translate("TeacherMainWindow", "\346\200\247\345\210\253\357\274\232", nullptr));
-        genderLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
-        label_4->setText(QCoreApplication::translate("TeacherMainWindow", "\345\271\264\351\276\204\357\274\232", nullptr));
-        ageLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
-        label_5->setText(QCoreApplication::translate("TeacherMainWindow", "\351\231\242\347\263\273\357\274\232", nullptr));
-        departmentLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
-        label_6->setText(QCoreApplication::translate("TeacherMainWindow", "\350\201\214\347\247\260\357\274\232", nullptr));
-        titleLabelValue->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
-        label_7->setText(QCoreApplication::translate("TeacherMainWindow", "\347\224\265\350\257\235\357\274\232", nullptr));
-        phoneLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
-        label_8->setText(QCoreApplication::translate("TeacherMainWindow", "\351\202\256\347\256\261\357\274\232", nullptr));
-        emailLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
+        label_courses->setText(QCoreApplication::translate("TeacherMainWindow", "\346\216\210\350\257\276\350\257\276\347\250\213\357\274\232", nullptr));
+        coursesLabel->setText(QCoreApplication::translate("TeacherMainWindow", "-", nullptr));
         coursesTitleLabel->setText(QCoreApplication::translate("TeacherMainWindow", "\346\210\221\347\232\204\350\257\276\347\250\213 (\345\217\214\345\207\273\346\237\245\347\234\213\350\257\276\347\250\213\345\255\246\347\224\237)", nullptr));
         refreshCoursesButton->setText(QCoreApplication::translate("TeacherMainWindow", "\345\210\267\346\226\260", nullptr));
         courseStudentsTitleLabel->setText(QCoreApplication::translate("TeacherMainWindow", "\350\257\276\347\250\213\345\255\246\347\224\237\345\210\227\350\241\250", nullptr));

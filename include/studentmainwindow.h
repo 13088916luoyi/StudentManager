@@ -2,6 +2,7 @@
 #define STUDENTMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidgetItem>
 #include "user.h"
 #include "studentcontroller.h"
 #include "gradecontroller.h"
@@ -28,6 +29,9 @@ private slots:
     void onEditProfileClicked();
     void onSelectCourseClicked();
     void onDropCourseClicked();
+    void onMyCourseTableItemEntered(QTableWidgetItem* item);
+    void onAvailableCourseTableItemEntered(QTableWidgetItem* item);
+    void onGradeTableItemEntered(QTableWidgetItem* item);
 
 private:
     Ui::StudentMainWindow *ui;

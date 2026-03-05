@@ -2,6 +2,7 @@
 #define TEACHERMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidgetItem>
 #include "user.h"
 #include "teachercontroller.h"
 #include "coursecontroller.h"
@@ -20,6 +21,9 @@ public:
     explicit TeacherMainWindow(const User& user, QWidget *parent = nullptr);
     ~TeacherMainWindow();
 
+signals:
+    void logoutRequested();
+
 private slots:
     void onNavProfileClicked();
     void onNavCoursesClicked();
@@ -30,6 +34,8 @@ private slots:
     void onCourseDoubleClicked(int row, int column);
     void onEditGradeClicked();
     void onViewStatsClicked();
+    void onCourseTableItemEntered(QTableWidgetItem* item);
+    void onCourseStudentTableItemEntered(QTableWidgetItem* item);
 
 private:
     Ui::TeacherMainWindow *ui;

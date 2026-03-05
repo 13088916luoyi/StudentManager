@@ -18,22 +18,6 @@ void GradeDialog::setGrade(const Grade& grade)
 {
     ui->gradeSpinBox->setValue(grade.grade());
     
-    int semIndex = ui->semesterComboBox->findText(grade.semester());
-    if (semIndex >= 0) {
-        ui->semesterComboBox->setCurrentIndex(semIndex);
-    } else {
-        ui->semesterComboBox->setEditText(grade.semester());
-    }
-    
-    int examIndex = ui->examTypeComboBox->findText(grade.examType());
-    if (examIndex >= 0) {
-        ui->examTypeComboBox->setCurrentIndex(examIndex);
-    } else {
-        ui->examTypeComboBox->setEditText(grade.examType());
-    }
-    
-    ui->remarksEdit->setText(grade.remarks());
-    
     for (int i = 0; i < ui->studentComboBox->count(); ++i) {
         if (ui->studentComboBox->itemData(i).toInt() == grade.studentId()) {
             ui->studentComboBox->setCurrentIndex(i);
@@ -55,9 +39,6 @@ Grade GradeDialog::getGrade() const
     grade.setStudentId(ui->studentComboBox->currentData().toInt());
     grade.setCourseId(ui->courseComboBox->currentData().toInt());
     grade.setGrade(ui->gradeSpinBox->value());
-    grade.setSemester(ui->semesterComboBox->currentText());
-    grade.setExamType(ui->examTypeComboBox->currentText());
-    grade.setRemarks(ui->remarksEdit->text().trimmed());
     return grade;
 }
 

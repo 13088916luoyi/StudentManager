@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../logindialog.h"
+#include "../../../include/logindialog.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

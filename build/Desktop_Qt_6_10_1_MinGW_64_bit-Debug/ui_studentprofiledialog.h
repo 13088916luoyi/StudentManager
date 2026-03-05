@@ -12,14 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -28,35 +27,90 @@ class Ui_StudentProfileDialog
 {
 public:
     QVBoxLayout *verticalLayout;
+    QLabel *titleLabel;
     QGroupBox *groupBox;
     QFormLayout *formLayout;
     QLabel *label_studentNo;
     QLabel *studentNoLabel;
     QLabel *label_name;
     QLineEdit *nameEdit;
-    QLabel *label_gender;
-    QComboBox *genderCombo;
-    QLabel *label_age;
-    QSpinBox *ageSpinBox;
-    QLabel *label_department;
-    QLineEdit *departmentEdit;
     QLabel *label_class;
     QLineEdit *classEdit;
-    QLabel *label_phone;
-    QLineEdit *phoneEdit;
-    QLabel *label_email;
-    QLineEdit *emailEdit;
+    QLabel *label_major;
+    QLineEdit *majorEdit;
+    QSpacerItem *verticalSpacer;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *StudentProfileDialog)
     {
         if (StudentProfileDialog->objectName().isEmpty())
             StudentProfileDialog->setObjectName("StudentProfileDialog");
-        StudentProfileDialog->resize(450, 450);
+        StudentProfileDialog->resize(450, 300);
+        StudentProfileDialog->setStyleSheet(QString::fromUtf8("QDialog {\n"
+"    background-color: #f5f5f5;\n"
+"}\n"
+"QLabel {\n"
+"    font-size: 13px;\n"
+"    color: #333333;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QLineEdit {\n"
+"    padding: 8px;\n"
+"    border: 1px solid #cccccc;\n"
+"    border-radius: 4px;\n"
+"    background-color: white;\n"
+"    font-size: 13px;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #4a90d9;\n"
+"}\n"
+"QGroupBox {\n"
+"    font-size: 14px;\n"
+"    font-weight: bold;\n"
+"    border: 1px solid #cccccc;\n"
+"    border-radius: 6px;\n"
+"    margin-top: 10px;\n"
+"    padding-top: 10px;\n"
+"}\n"
+"QGroupBox::title {\n"
+"    subcontrol-origin: margin;\n"
+"    left: 10px;\n"
+"    padding: 0 5px;\n"
+"}\n"
+"QPushButton {\n"
+"    padding: 10px 20px;\n"
+"    border: none;\n"
+"    border-radius: 4px;\n"
+"    font-size: 13px;\n"
+"    font-weight: bold;\n"
+"    min-width: 80px;\n"
+"}\n"
+"QPushButton[text=\"\347\241\256\345\256\232\"], QPushButton[text=\"OK\"] {\n"
+"    background-color: #4a90d9;\n"
+"    color: white;\n"
+"}\n"
+"QPushButton[text=\"\347\241\256"
+                        "\345\256\232\"]:hover, QPushButton[text=\"OK\"]:hover {\n"
+"    background-color: #3a7bc8;\n"
+"}\n"
+"QPushButton[text=\"\345\217\226\346\266\210\"], QPushButton[text=\"Cancel\"] {\n"
+"    background-color: #e0e0e0;\n"
+"    color: #333333;\n"
+"}\n"
+"QPushButton[text=\"\345\217\226\346\266\210\"]:hover, QPushButton[text=\"Cancel\"]:hover {\n"
+"    background-color: #d0d0d0;\n"
+"}"));
         verticalLayout = new QVBoxLayout(StudentProfileDialog);
         verticalLayout->setSpacing(15);
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(20, 20, 20, 20);
+        verticalLayout->setContentsMargins(25, 25, 25, 25);
+        titleLabel = new QLabel(StudentProfileDialog);
+        titleLabel->setObjectName("titleLabel");
+        titleLabel->setStyleSheet(QString::fromUtf8("font-size: 18px; font-weight: bold; color: #4a90d9; margin-bottom: 10px;"));
+        titleLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(titleLabel);
+
         groupBox = new QGroupBox(StudentProfileDialog);
         groupBox->setObjectName("groupBox");
         QFont font;
@@ -66,6 +120,7 @@ public:
         formLayout->setObjectName("formLayout");
         formLayout->setHorizontalSpacing(15);
         formLayout->setVerticalSpacing(12);
+        formLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignVCenter);
         label_studentNo = new QLabel(groupBox);
         label_studentNo->setObjectName("label_studentNo");
         label_studentNo->setFont(font);
@@ -88,92 +143,48 @@ public:
         nameEdit = new QLineEdit(groupBox);
         nameEdit->setObjectName("nameEdit");
         nameEdit->setFont(font);
+        nameEdit->setMinimumSize(QSize(250, 35));
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, nameEdit);
-
-        label_gender = new QLabel(groupBox);
-        label_gender->setObjectName("label_gender");
-        label_gender->setFont(font);
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_gender);
-
-        genderCombo = new QComboBox(groupBox);
-        genderCombo->addItem(QString());
-        genderCombo->addItem(QString());
-        genderCombo->setObjectName("genderCombo");
-        genderCombo->setFont(font);
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, genderCombo);
-
-        label_age = new QLabel(groupBox);
-        label_age->setObjectName("label_age");
-        label_age->setFont(font);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_age);
-
-        ageSpinBox = new QSpinBox(groupBox);
-        ageSpinBox->setObjectName("ageSpinBox");
-        ageSpinBox->setFont(font);
-        ageSpinBox->setMinimum(16);
-        ageSpinBox->setMaximum(100);
-
-        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, ageSpinBox);
-
-        label_department = new QLabel(groupBox);
-        label_department->setObjectName("label_department");
-        label_department->setFont(font);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_department);
-
-        departmentEdit = new QLineEdit(groupBox);
-        departmentEdit->setObjectName("departmentEdit");
-        departmentEdit->setFont(font);
-
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, departmentEdit);
 
         label_class = new QLabel(groupBox);
         label_class->setObjectName("label_class");
         label_class->setFont(font);
 
-        formLayout->setWidget(5, QFormLayout::ItemRole::LabelRole, label_class);
+        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_class);
 
         classEdit = new QLineEdit(groupBox);
         classEdit->setObjectName("classEdit");
         classEdit->setFont(font);
+        classEdit->setMinimumSize(QSize(250, 35));
 
-        formLayout->setWidget(5, QFormLayout::ItemRole::FieldRole, classEdit);
+        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, classEdit);
 
-        label_phone = new QLabel(groupBox);
-        label_phone->setObjectName("label_phone");
-        label_phone->setFont(font);
+        label_major = new QLabel(groupBox);
+        label_major->setObjectName("label_major");
+        label_major->setFont(font);
 
-        formLayout->setWidget(6, QFormLayout::ItemRole::LabelRole, label_phone);
+        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_major);
 
-        phoneEdit = new QLineEdit(groupBox);
-        phoneEdit->setObjectName("phoneEdit");
-        phoneEdit->setFont(font);
+        majorEdit = new QLineEdit(groupBox);
+        majorEdit->setObjectName("majorEdit");
+        majorEdit->setFont(font);
+        majorEdit->setMinimumSize(QSize(250, 35));
 
-        formLayout->setWidget(6, QFormLayout::ItemRole::FieldRole, phoneEdit);
-
-        label_email = new QLabel(groupBox);
-        label_email->setObjectName("label_email");
-        label_email->setFont(font);
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::LabelRole, label_email);
-
-        emailEdit = new QLineEdit(groupBox);
-        emailEdit->setObjectName("emailEdit");
-        emailEdit->setFont(font);
-
-        formLayout->setWidget(7, QFormLayout::ItemRole::FieldRole, emailEdit);
+        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, majorEdit);
 
 
         verticalLayout->addWidget(groupBox);
+
+        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
 
         buttonBox = new QDialogButtonBox(StudentProfileDialog);
         buttonBox->setObjectName("buttonBox");
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox->setCenterButtons(true);
 
         verticalLayout->addWidget(buttonBox);
 
@@ -188,19 +199,16 @@ public:
     void retranslateUi(QDialog *StudentProfileDialog)
     {
         StudentProfileDialog->setWindowTitle(QCoreApplication::translate("StudentProfileDialog", "\347\274\226\350\276\221\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
+        titleLabel->setText(QCoreApplication::translate("StudentProfileDialog", "\347\274\226\350\276\221\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
         groupBox->setTitle(QCoreApplication::translate("StudentProfileDialog", "\345\237\272\346\234\254\344\277\241\346\201\257", nullptr));
         label_studentNo->setText(QCoreApplication::translate("StudentProfileDialog", "\345\255\246\345\217\267\357\274\232", nullptr));
         studentNoLabel->setText(QCoreApplication::translate("StudentProfileDialog", "-", nullptr));
         label_name->setText(QCoreApplication::translate("StudentProfileDialog", "\345\247\223\345\220\215\357\274\232", nullptr));
-        label_gender->setText(QCoreApplication::translate("StudentProfileDialog", "\346\200\247\345\210\253\357\274\232", nullptr));
-        genderCombo->setItemText(0, QCoreApplication::translate("StudentProfileDialog", "\347\224\267", nullptr));
-        genderCombo->setItemText(1, QCoreApplication::translate("StudentProfileDialog", "\345\245\263", nullptr));
-
-        label_age->setText(QCoreApplication::translate("StudentProfileDialog", "\345\271\264\351\276\204\357\274\232", nullptr));
-        label_department->setText(QCoreApplication::translate("StudentProfileDialog", "\351\231\242\347\263\273\357\274\232", nullptr));
+        nameEdit->setPlaceholderText(QCoreApplication::translate("StudentProfileDialog", "\350\257\267\350\276\223\345\205\245\345\247\223\345\220\215", nullptr));
         label_class->setText(QCoreApplication::translate("StudentProfileDialog", "\347\217\255\347\272\247\357\274\232", nullptr));
-        label_phone->setText(QCoreApplication::translate("StudentProfileDialog", "\347\224\265\350\257\235\357\274\232", nullptr));
-        label_email->setText(QCoreApplication::translate("StudentProfileDialog", "\351\202\256\347\256\261\357\274\232", nullptr));
+        classEdit->setPlaceholderText(QCoreApplication::translate("StudentProfileDialog", "\350\257\267\350\276\223\345\205\245\347\217\255\347\272\247", nullptr));
+        label_major->setText(QCoreApplication::translate("StudentProfileDialog", "\344\270\223\344\270\232\357\274\232", nullptr));
+        majorEdit->setPlaceholderText(QCoreApplication::translate("StudentProfileDialog", "\350\257\267\350\276\223\345\205\245\344\270\223\344\270\232", nullptr));
     } // retranslateUi
 
 };

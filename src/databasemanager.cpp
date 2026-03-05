@@ -84,8 +84,6 @@ bool DatabaseManager::createStudentsTable()
             age INTEGER,
             department VARCHAR(100),
             class_name VARCHAR(50),
-            phone VARCHAR(20),
-            email VARCHAR(100),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
@@ -112,8 +110,6 @@ bool DatabaseManager::createTeachersTable()
             age INTEGER,
             department VARCHAR(100),
             title VARCHAR(50),
-            phone VARCHAR(20),
-            email VARCHAR(100),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
@@ -138,7 +134,7 @@ bool DatabaseManager::createCoursesTable()
             teacher_id INTEGER,
             credit REAL,
             hours INTEGER,
-            description TEXT,
+            course_type VARCHAR(20) CHECK(course_type IN ('必修', '选修')),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL
@@ -161,14 +157,11 @@ bool DatabaseManager::createGradesTable()
             student_id INTEGER NOT NULL,
             course_id INTEGER NOT NULL,
             grade REAL CHECK(grade >= 0 AND grade <= 100),
-            semester VARCHAR(20),
-            exam_type VARCHAR(50),
-            remarks TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
             FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
-            UNIQUE(student_id, course_id, semester)
+            UNIQUE(student_id, course_id)
         )
     )";
 

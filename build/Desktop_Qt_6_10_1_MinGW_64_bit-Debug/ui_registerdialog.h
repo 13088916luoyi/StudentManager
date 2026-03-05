@@ -48,25 +48,74 @@ public:
     {
         if (RegisterDialog->objectName().isEmpty())
             RegisterDialog->setObjectName("RegisterDialog");
-        RegisterDialog->resize(400, 350);
+        RegisterDialog->resize(480, 400);
+        RegisterDialog->setStyleSheet(QString::fromUtf8("QDialog {\n"
+"    background-color: #f5f5f5;\n"
+"}\n"
+"QLabel {\n"
+"    font-size: 13px;\n"
+"    color: #333333;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QLabel#titleLabel {\n"
+"    font-size: 24px;\n"
+"    font-weight: bold;\n"
+"    color: #4a90d9;\n"
+"}\n"
+"QLineEdit, QComboBox {\n"
+"    padding: 10px;\n"
+"    border: 1px solid #cccccc;\n"
+"    border-radius: 4px;\n"
+"    background-color: white;\n"
+"    font-size: 14px;\n"
+"    min-height: 40px;\n"
+"}\n"
+"QLineEdit:focus, QComboBox:focus {\n"
+"    border: 2px solid #4a90d9;\n"
+"}\n"
+"QPushButton {\n"
+"    padding: 12px 30px;\n"
+"    border: none;\n"
+"    border-radius: 4px;\n"
+"    font-size: 14px;\n"
+"    font-weight: bold;\n"
+"    min-width: 100px;\n"
+"}\n"
+"QPushButton#registerButton {\n"
+"    background-color: #4a90d9;\n"
+"    color: white;\n"
+"}\n"
+"QPushButton#registerButton:hover {\n"
+"    background-color: #3a7bc8;\n"
+"}\n"
+"QPushButton#cancelButton {\n"
+"    background-color: #e0e0e0;\n"
+"    color: #333333;\n"
+"}\n"
+"QPushButton#cancelButton:hover {\n"
+""
+                        "    background-color: #d0d0d0;\n"
+"}\n"
+""));
         verticalLayout = new QVBoxLayout(RegisterDialog);
+        verticalLayout->setSpacing(20);
         verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(40, 30, 40, 30);
         titleLabel = new QLabel(RegisterDialog);
         titleLabel->setObjectName("titleLabel");
         titleLabel->setAlignment(Qt::AlignCenter);
-        QFont font;
-        font.setPointSize(16);
-        font.setBold(true);
-        titleLabel->setFont(font);
 
         verticalLayout->addWidget(titleLabel);
 
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
 
         formLayout = new QFormLayout();
+        formLayout->setSpacing(15);
         formLayout->setObjectName("formLayout");
+        formLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        formLayout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
         usernameLabel = new QLabel(RegisterDialog);
         usernameLabel->setObjectName("usernameLabel");
 
@@ -106,6 +155,7 @@ public:
 
         roleComboBox = new QComboBox(RegisterDialog);
         roleComboBox->setObjectName("roleComboBox");
+        roleComboBox->setMinimumSize(QSize(0, 40));
 
         formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, roleComboBox);
 
@@ -117,6 +167,7 @@ public:
         verticalLayout->addItem(verticalSpacer_2);
 
         horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(20);
         horizontalLayout->setObjectName("horizontalLayout");
         registerButton = new QPushButton(RegisterDialog);
         registerButton->setObjectName("registerButton");
@@ -131,7 +182,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_3);
 
@@ -143,12 +194,15 @@ public:
 
     void retranslateUi(QDialog *RegisterDialog)
     {
-        RegisterDialog->setWindowTitle(QCoreApplication::translate("RegisterDialog", "\346\263\250\345\206\214", nullptr));
+        RegisterDialog->setWindowTitle(QCoreApplication::translate("RegisterDialog", "\347\224\250\346\210\267\346\263\250\345\206\214", nullptr));
         titleLabel->setText(QCoreApplication::translate("RegisterDialog", "\347\224\250\346\210\267\346\263\250\345\206\214", nullptr));
-        usernameLabel->setText(QCoreApplication::translate("RegisterDialog", "\347\224\250\346\210\267\345\220\215:", nullptr));
-        passwordLabel->setText(QCoreApplication::translate("RegisterDialog", "\345\257\206\347\240\201:", nullptr));
-        confirmPasswordLabel->setText(QCoreApplication::translate("RegisterDialog", "\347\241\256\350\256\244\345\257\206\347\240\201:", nullptr));
-        roleLabel->setText(QCoreApplication::translate("RegisterDialog", "\350\247\222\350\211\262:", nullptr));
+        usernameLabel->setText(QCoreApplication::translate("RegisterDialog", "\347\224\250\346\210\267\345\220\215\357\274\232", nullptr));
+        usernameEdit->setPlaceholderText(QCoreApplication::translate("RegisterDialog", "\350\257\267\350\276\223\345\205\245\347\224\250\346\210\267\345\220\215", nullptr));
+        passwordLabel->setText(QCoreApplication::translate("RegisterDialog", "\345\257\206\347\240\201\357\274\232", nullptr));
+        passwordEdit->setPlaceholderText(QCoreApplication::translate("RegisterDialog", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201\357\274\210\350\207\263\345\260\2216\344\275\215\357\274\211", nullptr));
+        confirmPasswordLabel->setText(QCoreApplication::translate("RegisterDialog", "\347\241\256\350\256\244\345\257\206\347\240\201\357\274\232", nullptr));
+        confirmPasswordEdit->setPlaceholderText(QCoreApplication::translate("RegisterDialog", "\350\257\267\345\206\215\346\254\241\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
+        roleLabel->setText(QCoreApplication::translate("RegisterDialog", "\350\247\222\350\211\262\357\274\232", nullptr));
         registerButton->setText(QCoreApplication::translate("RegisterDialog", "\346\263\250\345\206\214", nullptr));
         cancelButton->setText(QCoreApplication::translate("RegisterDialog", "\345\217\226\346\266\210", nullptr));
     } // retranslateUi
