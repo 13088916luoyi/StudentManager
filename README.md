@@ -188,9 +188,18 @@ cd StudentManager
 ```bash
 python init_database.py
 ```
+
 这将根据 `module_project2/` 目录下的原始数据文件创建 SQLite 数据库。
 
-3. **使用 Qt Creator 打开项目**
+3. **放置数据库文件**
+
+> **注意**：运行程序前，请将生成的 `studentmanager.db` 数据库文件复制到编译输出的 `debug` 目录中：
+> ```
+> build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/debug/studentmanager.db
+> ```
+> 程序使用相对路径加载数据库，因此数据库文件必须与可执行文件在同一目录下。
+
+4. **使用 Qt Creator 打开项目**
    - 打开 `StudentManager.pro` 文件
    - 配置编译套件（MinGW 64-bit）
    - 构建并运行

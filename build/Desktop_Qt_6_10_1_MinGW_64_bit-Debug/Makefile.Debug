@@ -3374,6 +3374,8 @@ debug/moc_courseselectiondialog.cpp: ../../include/courseselectiondialog.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/course.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		debug/moc_predefs.h \
@@ -8189,6 +8191,7 @@ debug/teacherdialog.o: ../../src/teacherdialog.cpp ../../include/teacherdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
@@ -8200,27 +8203,13 @@ debug/teacherdialog.o: ../../src/teacherdialog.cpp ../../include/teacherdialog.h
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QListWidget \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlistwidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlistview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QListWidgetItem
+		../../include/courseselectiondialog.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teacherdialog.o ..\..\src\teacherdialog.cpp
 
 debug/coursedialog.o: ../../src/coursedialog.cpp ../../include/coursedialog.h \
@@ -8927,21 +8916,6 @@ debug/teacherprofiledialog.o: ../../src/teacherprofiledialog.cpp ../../include/t
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QComboBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialogButtonBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFormLayout \
@@ -8953,6 +8927,7 @@ debug/teacherprofiledialog.o: ../../src/teacherprofiledialog.cpp ../../include/t
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QGroupBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgroupbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
@@ -8963,8 +8938,7 @@ debug/teacherprofiledialog.o: ../../src/teacherprofiledialog.cpp ../../include/t
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teacherprofiledialog.o ..\..\src\teacherprofiledialog.cpp
 
@@ -9404,21 +9378,6 @@ debug/studentprofiledialog.o: ../../src/studentprofiledialog.cpp ../../include/s
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QComboBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qvalidator.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialogButtonBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QFormLayout \
@@ -9430,6 +9389,7 @@ debug/studentprofiledialog.o: ../../src/studentprofiledialog.cpp ../../include/s
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QGroupBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgroupbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
@@ -9440,8 +9400,7 @@ debug/studentprofiledialog.o: ../../src/studentprofiledialog.cpp ../../include/s
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextformat.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpen.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextoption.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qspinbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\studentprofiledialog.o ..\..\src\studentprofiledialog.cpp
 
@@ -9645,6 +9604,8 @@ debug/courseselectiondialog.o: ../../src/courseselectiondialog.cpp ../../include
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QVector \
+		C:/Study/qt/6.10.1/mingw_64/include/QtCore/qvector.h \
 		../../include/course.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtCore/QString \
 		ui_courseselectiondialog.h \
@@ -9655,6 +9616,11 @@ debug/courseselectiondialog.o: ../../src/courseselectiondialog.cpp ../../include
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qapplication.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QDialogButtonBox \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qabstractitemview.h \
@@ -9677,14 +9643,13 @@ debug/courseselectiondialog.o: ../../src/courseselectiondialog.cpp ../../include
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QSpacerItem \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h
+		C:/Study/qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\courseselectiondialog.o ..\..\src\courseselectiondialog.cpp
 
 debug/gradestatsdialog.o: ../../src/gradestatsdialog.cpp ../../include/gradestatsdialog.h \

@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // 构建数据库路径：项目根目录/studentmanager.db
-    QString dbPath = QDir::currentPath() + "/../../../studentmanager.db";
+    // 构建数据库路径：当前目录（与exe同目录）下的 studentmanager.db
+    QString dbPath = QDir::currentPath() + "/studentmanager.db";
     dbPath = QDir::cleanPath(dbPath);  // 规范化路径
     
     qDebug() << "当前工作目录:" << QDir::currentPath();
