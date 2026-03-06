@@ -64,35 +64,35 @@ StudentManager/
 │   ├── teacherprofiledialog.h   # 教师信息编辑对话框
 │   └── user.h              # 用户实体类
 ├── src/                    # 源文件
-│   ├── adminmainwindow.cpp
-│   ├── authcontroller.cpp
-│   ├── coursecontroller.cpp
-│   ├── coursedao.cpp
-│   ├── courseselectiondialog.cpp
-│   ├── databasemanager.cpp
-│   ├── gradecontroller.cpp
-│   ├── gradedao.cpp
-│   ├── loginwindow.cpp
-│   ├── main.cpp
-│   ├── mainwindow.cpp
-│   ├── studentcontroller.cpp
-│   ├── studentdao.cpp
-│   ├── studentmainwindow.cpp
-│   ├── studentprofiledialog.cpp
-│   ├── teachercontroller.cpp
-│   ├── teacherdao.cpp
-│   ├── teacherdialog.cpp
-│   ├── teachermainwindow.cpp
-│   └── teacherprofiledialog.cpp
+│   ├── adminmainwindow.cpp        # 管理员主窗口实现
+│   ├── authcontroller.cpp         # 登录认证控制器实现
+│   ├── coursecontroller.cpp       # 课程管理控制器实现
+│   ├── coursedao.cpp              # 课程数据访问实现
+│   ├── courseselectiondialog.cpp  # 课程选择对话框实现
+│   ├── databasemanager.cpp        # 数据库连接管理实现
+│   ├── gradecontroller.cpp        # 成绩管理控制器实现
+│   ├── gradedao.cpp               # 成绩数据访问实现
+│   ├── loginwindow.cpp            # 登录窗口实现
+│   ├── main.cpp                   # 程序入口主函数
+│   ├── mainwindow.cpp             # 主窗口实现
+│   ├── studentcontroller.cpp      # 学生管理控制器实现
+│   ├── studentdao.cpp             # 学生数据访问实现
+│   ├── studentmainwindow.cpp      # 学生主窗口实现
+│   ├── studentprofiledialog.cpp   # 学生信息编辑对话框实现
+│   ├── teachercontroller.cpp      # 教师管理控制器实现
+│   ├── teacherdao.cpp             # 教师数据访问实现
+│   ├── teacherdialog.cpp          # 教师信息编辑对话框实现
+│   ├── teachermainwindow.cpp      # 教师主窗口实现
+│   └── teacherprofiledialog.cpp   # 教师信息编辑对话框实现
 ├── ui/                     # UI 文件
-│   ├── adminmainwindow.ui
-│   ├── courseselectiondialog.ui
-│   ├── loginwindow.ui
-│   ├── studentmainwindow.ui
-│   ├── studentprofiledialog.ui
-│   ├── teacherdialog.ui
-│   ├── teacherprofiledialog.ui
-│   └── teachermainwindow.ui
+│   ├── adminmainwindow.ui         # 管理员主窗口界面
+│   ├── courseselectiondialog.ui   # 课程选择对话框界面
+│   ├── loginwindow.ui             # 登录窗口界面
+│   ├── studentmainwindow.ui       # 学生主窗口界面
+│   ├── studentprofiledialog.ui    # 学生信息编辑对话框界面
+│   ├── teacherdialog.ui           # 教师信息编辑对话框界面
+│   ├── teacherprofiledialog.ui    # 教师信息编辑对话框界面
+│   └── teachermainwindow.ui       # 教师主窗口界面
 ├── module_project2/        # 原始数据文件
 │   ├── staff.txt           # 教师数据
 │   ├── student.txt         # 学生数据
